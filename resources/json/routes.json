@@ -1,0 +1,14 @@
+{
+    "auth.login": "auth\/login",
+    "auth.register": "auth\/register",
+    "auth.logout": "auth\/logout",
+    "auth.": "auth\/flush-tokens",
+    "auth.tokens": "auth\/tokens",
+    "sanctum.csrf-cookie": "sanctum\/csrf-cookie",
+    "ignition.healthCheck": "_ignition\/health-check",
+    "ignition.executeSolution": "_ignition\/execute-solution",
+    "ignition.updateConfig": "_ignition\/update-config",
+    "": "api\/user",
+    "app": "{any?}",
+    "subdomain.app": "{any?}"
+}
