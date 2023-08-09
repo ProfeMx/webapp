@@ -25,7 +25,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerModelEvents();
     }
 
     /**
@@ -35,4 +35,44 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+    private function registerModelEvents()
+    {
+        
+        $basePath = realpath(__DIR__ . '/../Http/Events');
+
+        $namespace = 'App\Http\Events\\';
+
+        $models = glob("{$basePath}/*", GLOB_ONLYDIR);
+
+        foreach ($models as $modelPath) {
+        
+            $model = basename($modelPath);
+        
+            $events = glob("{$modelPath}/Events/*.php", GLOB_BRACE);
+
+            foreach ($events as $eventPath) {
+        
+                $eventName = pathinfo($eventPath, PATHINFO_FILENAME);
+        
+                $listeners = glob("{$modelPath}/Listeners/{$eventName}/*.php", GLOB_BRACE);
+
+                foreach ($listeners as $listenerPath) {
+        
+                    $listenerName = pathinfo($listenerPath, PATHINFO_FILENAME);
+        
+                    $event = "{$namespace}{$model}\\Events\\{$eventName}";
+        
+                    $listener = "{$namespace}{$model}\\Listeners\\{$eventName}\\{$listenerName}";
+
+                    Event::listen($event, $listener);
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
