@@ -1,13 +1,40 @@
 {
     "private": true,
-    "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build"
     },
     "devDependencies": {
+        "@vitejs/plugin-vue": "^4.0.0",
+        "autoprefixer": "^10.4.13",
         "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.5",
+        "laravel-vite-plugin": "^0.7.2",
+        "postcss": "^8.4.21",
+        "tailwindcss": "^3.2.7",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.3.0",
+        "@tinymce/tinymce-vue": "^5.0.0",
+        "@vue/devtools-api": "^6.5.0",
+        "@vue/runtime-dom": "^3.2.47",
+        "chance": "^1.1.10",
+        "dayjs": "^1.11.7",
+        "innoboxrr-form-elements": "^1.0.0",
+        "innoboxrr-i18n": "^1.0.0",
+        "innoboxrr-js-validator": "^1.0.0",
+        "innoboxrr-js-libs": "^1.0.0",
+        "innoboxrr-route-resolver": "^1.0.0",
+        "innoboxrr-vue-datatable": "^1.0.0",
+        "inputmask": "^5.0.7",
+        "lodash": "^4.17.21",
+        "sweetalert": "^2.1.2",
+        "sweetalert2": "^11.7.3",
+        "uikit": "^3.16.3",
+        "uikit-custom-icons": "^1.0.0",
+        "vue": "^3.2.47",
+        "vue-router": "^4.1.6",
+        "vue-select": "^4.0.0-beta.6",
+        "vuex": "^4.1.0"
     }
 }

@@ -2,17 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+# VUE APP
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('{any?}', '\App\Http\Controllers\AppController@app')
+        ->where('any', '^(?!api).*$')
+        ->name('app');
+
+    Route::domain('{subdomain}.' . env('SESSION_DOMAIN'))->group(function () {
+
+        Route::get('{any?}', '\App\Http\Controllers\AppController@app')
+            ->where('any', '^(?!api).*$')
+            ->name('subdomain.app');
+
+    });

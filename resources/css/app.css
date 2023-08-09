@@ -1,0 +1,6 @@
+@import "/node_modules/uikit/dist/css/uikit.min.css";
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import "@css/custom.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

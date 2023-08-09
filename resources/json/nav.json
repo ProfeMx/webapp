@@ -1,0 +1,15 @@
+{
+	"adminNav": [
+		{
+			"name": "Administración general",
+			"paths": [
+				{
+					"name": "Admin", 
+					"label": "Panel de administración", 
+					"canView": ["*"]
+				}
+			],
+			"canView": ["*"]
+		}
+	]
+}
