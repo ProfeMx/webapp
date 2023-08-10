@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->longText('content');
+            $table->foreignId('forum_id');
+            $table->foreignId('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

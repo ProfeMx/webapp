@@ -24,11 +24,18 @@ class Course extends Model
         CourseOperations,
         CourseMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'payload',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'name'
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'name'
+    ];
 
     protected $casts = [];
 
@@ -38,11 +45,5 @@ class Course extends Model
 
     public $loadable_relations = [];
 
-    /*
-    protected static function newFactory()
-    {
-        return \App\Database\Factories\CourseFactory::new();
-    }
-    */
 
 }

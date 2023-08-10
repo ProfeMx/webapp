@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->longText('payload')->nullable();
+            $table->foreignId('enrollment_id');
             $table->timestamps();
             $table->softDeletes();
         });

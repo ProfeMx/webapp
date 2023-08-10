@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedTinyInteger('order');
+            $table->foreignId('section_id');
             $table->timestamps();
             $table->softDeletes();
         });

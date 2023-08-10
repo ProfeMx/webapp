@@ -24,11 +24,37 @@ class Enrollment extends Model
         EnrollmentOperations,
         EnrollmentMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'type',
+        'status',
+        'grade',
+        'grade_override',
+        'dedication',
+        'dedication_override',
+        'payload',
+        'course_id',
+        'user_id',
+        'role',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'type',
+        'status',
+        'grade_override',
+        'dedication_override',
+        'payload',
+        'course_id',
+        'user_id',
+        'role',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'type',
+        'status',
+        'grade_override',
+        'dedication_override',
+        'role',
+    ];
 
     protected $casts = [];
 

@@ -24,11 +24,19 @@ class File extends Model
         FileOperations,
         FileMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'path',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'title',
+        'path',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'title',
+    ];
 
     protected $casts = [];
 

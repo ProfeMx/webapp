@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('enrollment_logs', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->unsignedInteger('dedication');
+            $table->foreignId('enrollment_id');
+            $table->foreignId('lesson_id');
             $table->timestamps();
             $table->softDeletes();
         });

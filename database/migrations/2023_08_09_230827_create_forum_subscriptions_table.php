@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('forum_subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
+            $table->foreignId('user_id');
+            $table->foreignId('subscriptionable_id');
+            $table->string('subscriptionable_type');
             $table->timestamps();
             $table->softDeletes();
         });

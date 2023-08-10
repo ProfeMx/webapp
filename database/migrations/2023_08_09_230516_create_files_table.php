@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('path'); // ruta de S3 en AWS
             $table->timestamps();
             $table->softDeletes();
         });

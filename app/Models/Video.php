@@ -24,11 +24,23 @@ class Video extends Model
         VideoOperations,
         VideoMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'source',
+        'code',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'title',
+        'source',
+        'code',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'title',
+        'source',
+        'code',
+    ];
 
     protected $casts = [];
 

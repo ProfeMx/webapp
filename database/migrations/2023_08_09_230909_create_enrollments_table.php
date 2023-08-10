@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->string('status')->default('pending');
+            $table->decimal('grade', 3, 2)->nullable();
+            $table->decimal('grade_override', 3, 2)->nullable();
+            $table->unsignedInteger('dedication')->default(0);
+            $table->unsignedInteger('dedication_override')->default(0);
+            $table->longText('payload')->nullable();
+            $table->foreignId('course_id');
+            $table->foreignId('user_id');
+            $table->string('role');
             $table->timestamps();
             $table->softDeletes();
         });

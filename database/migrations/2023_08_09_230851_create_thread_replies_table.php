@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('thread_replies', function (Blueprint $table) {
             $table->id();
+            $table->longText('content');
+            $table->foreignId('thread_id');
+            $table->foreignId('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -24,9 +24,16 @@ class Certificate extends Model
         CertificateOperations,
         CertificateMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'code',
+        'payload',
+        'enrollment_id',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'code',
+        'enrollment_id',
+    ];
 
     protected $updatable = [];
 

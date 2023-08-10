@@ -24,11 +24,29 @@ class Resource extends Model
         ResourceOperations,
         ResourceMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'type',
+        'status',
+        'order',
+        'lesson_id',
+        'resourceable_id',
+        'resourceable_type',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'name',
+        'type',
+        'status',
+        'lesson_id',
+        'resourceable_id',
+        'resourceable_type',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'name',
+        'status',
+    ];
 
     protected $casts = [];
 

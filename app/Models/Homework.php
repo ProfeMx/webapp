@@ -24,11 +24,21 @@ class Homework extends Model
         HomeworkOperations,
         HomeworkMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'type',
+        'payload',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'title',
+        'type',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'title',
+        'type',
+    ];
 
     protected $casts = [];
 

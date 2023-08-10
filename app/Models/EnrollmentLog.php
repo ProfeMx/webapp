@@ -24,11 +24,24 @@ class EnrollmentLog extends Model
         EnrollmentLogOperations,
         EnrollmentLogMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'type',
+        'dedication',
+        'enrollment_id',
+        'lesson_id',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'type',
+        'dedication',
+        'enrollment_id',
+        'lesson_id',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'type',
+        'dedication',
+    ];
 
     protected $casts = [];
 

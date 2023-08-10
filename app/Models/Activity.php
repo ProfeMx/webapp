@@ -24,11 +24,32 @@ class Activity extends Model
         ActivityOperations,
         ActivityMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'type',
+        'status',
+        'weight',
+        'order',
+        'lesson_id',
+        'activityable_id',
+        'activityable_type'
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'name',
+        'type',
+        'status',
+        'weight',
+        'lesson_id',
+        'activityable_id',
+        'activityable_type'
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'name',
+        'status',
+        'weight',
+    ];
 
     protected $casts = [];
 

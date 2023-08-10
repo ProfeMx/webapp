@@ -24,11 +24,21 @@ class Lesson extends Model
         LessonOperations,
         LessonMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'order',
+        'section_id',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'name',
+        'order',
+        'section_id',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'name',
+    ];
 
     protected $casts = [];
 

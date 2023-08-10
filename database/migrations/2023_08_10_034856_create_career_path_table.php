@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('career_path', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('career_id');
+            $table->foreignId('path_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('career_path');
     }
 };

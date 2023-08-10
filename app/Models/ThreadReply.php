@@ -24,11 +24,21 @@ class ThreadReply extends Model
         ThreadReplyOperations,
         ThreadReplyMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'content',
+        'thread_id',
+        'user_id',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'content',
+        'thread_id',
+        'user_id',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'content',
+    ];
 
     protected $casts = [];
 

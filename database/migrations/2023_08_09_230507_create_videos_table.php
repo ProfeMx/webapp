@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('source');
+            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
         });

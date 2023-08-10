@@ -24,11 +24,21 @@ class Question extends Model
         QuestionOperations,
         QuestionMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'version',
+        'type',
+        'order',
+        'payload',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'version',
+        'type',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'version',
+    ];
 
     protected $casts = [];
 

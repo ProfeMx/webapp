@@ -24,11 +24,30 @@ class Attempt extends Model
         AttemptOperations,
         AttemptMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'version',
+        'status',
+        'grade',
+        'grade_override',
+        'quiz_data',
+        'quiz_id',
+        'enrollment_id',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'version',
+        'status',
+        'grade_override',
+        'quiz_data',
+        'quiz_id',
+        'enrollment_id',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'version',
+        'status',
+        'grade_override',
+    ];
 
     protected $casts = [];
 

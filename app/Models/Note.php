@@ -24,11 +24,20 @@ class Note extends Model
         NoteOperations,
         NoteMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'content',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'title',
+        'content',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'title',
+        'content',
+    ];
 
     protected $casts = [];
 

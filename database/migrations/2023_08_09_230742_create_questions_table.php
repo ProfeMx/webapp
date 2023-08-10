@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->string('version');
+            $table->string('type'); // tf, select, option, short
+            $table->unsignedInteger('order');
+            $table->longText('payload')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -24,11 +24,36 @@ class Submission extends Model
         SubmissionOperations,
         SubmissionMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'content',
+        'submission_file',
+        'grade',
+        'grade_override',
+        'feedback',
+        'feedback_file',
+        'homework_id',
+        'enrollment_id',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'content',
+        'submission_file',
+        'grade',
+        'grade_override',
+        'feedback',
+        'feedback_file',
+        'homework_id',
+        'enrollment_id',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'content',
+        'submission_file',
+        'grade',
+        'grade_override',
+        'feedback',
+        'feedback_file',
+    ];
 
     protected $casts = [];
 

@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('course_path', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedTinyInteger('order')->default(0);
             $table->foreignId('course_id');
+            $table->foreignId('path_id');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('course_path');
     }
 };

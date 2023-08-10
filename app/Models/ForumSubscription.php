@@ -24,11 +24,23 @@ class ForumSubscription extends Model
         ForumSubscriptionOperations,
         ForumSubscriptionMutators;
         
-    protected $fillable = [];
+    protected $fillable = [
+        'status',
+        'user_id',
+        'subscriptionable_id',
+        'subscriptionable_type',
+    ];
 
-    protected $creatable = [];
+    protected $creatable = [
+        'status',
+        'user_id',
+        'subscriptionable_id',
+        'subscriptionable_type',
+    ];
 
-    protected $updatable = [];
+    protected $updatable = [
+        'status',
+    ];
 
     protected $casts = [];
 
