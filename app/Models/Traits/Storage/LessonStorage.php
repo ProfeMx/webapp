@@ -10,6 +10,8 @@ trait LessonStorage
 
         $lesson = $this->create($request->only($this->creatable));
 
+        $lesson->updateModelMetas($request);
+
         return $lesson;
 
     }
@@ -18,6 +20,8 @@ trait LessonStorage
     {
      
         $this->update($request->only($this->updatable));
+
+        $this->updateModelMetas($request);
 
         return $this;
 

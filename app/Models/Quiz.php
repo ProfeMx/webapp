@@ -40,7 +40,9 @@ class Quiz extends Model
         'version',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'payload' => 'json'
+    ];
 
     protected $protected_metas = [];
 

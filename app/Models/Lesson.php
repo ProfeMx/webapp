@@ -40,7 +40,9 @@ class Lesson extends Model
         'name',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'payload' => 'json'
+    ];
 
     protected $protected_metas = [];
 

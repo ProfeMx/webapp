@@ -40,7 +40,9 @@ class Question extends Model
         'version',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'payload' => 'json'
+    ];
 
     protected $protected_metas = [];
 
@@ -48,11 +50,11 @@ class Question extends Model
 
     public $loadable_relations = [];
 
-    /*
-    protected static function newFactory()
-    {
-        return \App\Database\Factories\QuestionFactory::new();
-    }
-    */
+    public $allowed_type = [
+        'true_false',
+        'single_option',
+        'multi_option',
+        'short_answer'
+    ];
 
 }

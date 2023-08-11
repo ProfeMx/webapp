@@ -29,6 +29,10 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'status' => [
+                'required',
+                Rule::in((new Course)->allowed_status)
+            ]
         ];
     }
 

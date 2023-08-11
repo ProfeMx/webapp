@@ -8,7 +8,19 @@ trait CourseOperations
     public function buildPayload()
     {
 
-        return [];
+        return [
+
+            'data' => [
+
+                'description' => $this->meta('description'),
+
+                'youtube' => $this->meta('youtube'),
+
+                'vimeo' => $this->meta('vimeo'),
+
+            ]
+
+        ];
 
     }
 

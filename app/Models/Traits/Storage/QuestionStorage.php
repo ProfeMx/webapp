@@ -10,6 +10,8 @@ trait QuestionStorage
 
         $question = $this->create($request->only($this->creatable));
 
+        $question->updateModelMetas($request);
+
         return $question;
 
     }
@@ -18,6 +20,8 @@ trait QuestionStorage
     {
      
         $this->update($request->only($this->updatable));
+
+        $this->updateModelMetas($request);
 
         return $this;
 

@@ -10,6 +10,8 @@ trait EnrollmentStorage
 
         $enrollment = $this->create($request->only($this->creatable));
 
+        $enrollment->updateModelMetas($request);
+
         return $enrollment;
 
     }
@@ -18,6 +20,8 @@ trait EnrollmentStorage
     {
      
         $this->update($request->only($this->updatable));
+
+        $this->updateModelMetas($request);
 
         return $this;
 

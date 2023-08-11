@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('status')->default('draft');
             $table->longText('payload')->nullable();
             $table->timestamps();
             $table->softDeletes();

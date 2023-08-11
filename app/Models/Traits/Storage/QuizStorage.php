@@ -10,6 +10,8 @@ trait QuizStorage
 
         $quiz = $this->create($request->only($this->creatable));
 
+        $quiz->updateModelMetas($request);
+
         return $quiz;
 
     }
@@ -18,6 +20,8 @@ trait QuizStorage
     {
      
         $this->update($request->only($this->updatable));
+
+        $this->updateModelMetas($request);
 
         return $this;
 

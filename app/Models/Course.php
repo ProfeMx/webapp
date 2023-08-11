@@ -26,24 +26,39 @@ class Course extends Model
         
     protected $fillable = [
         'name',
+        'status',
         'payload',
     ];
 
     protected $creatable = [
-        'name'
+        'name',
+        'status',
     ];
 
     protected $updatable = [
-        'name'
+        'name',
+        'status',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'payload' => 'json'
+    ];
 
     protected $protected_metas = [];
 
-    protected $editable_metas = [];
+    protected $editable_metas = [
+        'description',
+        'youtube',
+        'vimeo',
+    ];
 
     public $loadable_relations = [];
+
+    public $allowed_status = [
+        'public',
+        'draft',
+        'archived',
+    ];
 
 
 }

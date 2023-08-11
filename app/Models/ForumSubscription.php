@@ -50,11 +50,9 @@ class ForumSubscription extends Model
 
     public $loadable_relations = [];
 
-    /*
-    protected static function newFactory()
-    {
-        return \App\Database\Factories\ForumSubscriptionFactory::new();
-    }
-    */
+    public $allowed_status = [
+        'active',
+        'paused',
+    ];
 
 }

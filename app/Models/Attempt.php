@@ -57,11 +57,10 @@ class Attempt extends Model
 
     public $loadable_relations = [];
 
-    /*
-    protected static function newFactory()
-    {
-        return \App\Database\Factories\AttemptFactory::new();
-    }
-    */
+    public $allowed_status = [
+        'not_started',
+        'started',
+        'finished',
+    ];
 
 }

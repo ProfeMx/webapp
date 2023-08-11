@@ -56,7 +56,9 @@ class Enrollment extends Model
         'role',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'payload' => 'json'
+    ];
 
     protected $protected_metas = [];
 
@@ -64,11 +66,18 @@ class Enrollment extends Model
 
     public $loadable_relations = [];
 
-    /*
-    protected static function newFactory()
-    {
-        return \App\Database\Factories\EnrollmentFactory::new();
-    }
-    */
+    public $allowed_type = [
+        'free',
+        'subscription',
+        'payment',
+        'external_database',
+    ];
+
+    public $allowed_status = [
+        'active',
+        'pending',
+        'suspended',
+        'finished',
+    ];
 
 }

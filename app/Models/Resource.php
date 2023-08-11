@@ -56,11 +56,15 @@ class Resource extends Model
 
     public $loadable_relations = [];
 
-    /*
-    protected static function newFactory()
-    {
-        return \App\Database\Factories\ResourceFactory::new();
-    }
-    */
+    public $allowed_type = [
+        'note',
+        'video',
+        'file',
+    ];
+
+    public $allowed_status = [
+        'public',
+        'draft',
+    ];
 
 }

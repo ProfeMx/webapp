@@ -2,6 +2,8 @@
 
 namespace App\Models\Traits\Storage;
 
+use App\Models\CourseMeta;
+
 trait CourseStorage
 {
 
@@ -9,6 +11,8 @@ trait CourseStorage
     {
 
         $course = $this->create($request->only($this->creatable));
+
+        $course->updateModelMetas($request);
 
         return $course;
 
@@ -19,6 +23,8 @@ trait CourseStorage
      
         $this->update($request->only($this->updatable));
 
+        $this->updateModelMetas($request);
+
         return $this;
 
     }
@@ -26,7 +32,8 @@ trait CourseStorage
     public function updateModelMetas($request)
     {
 
-        $this->update_metas($request, self::class, 'course_id')->updatePayload();
+        $this->update_metas($request, CourseMeta::class, 'course_id')
+            ->updatePayload();
 
         return $this;
 
