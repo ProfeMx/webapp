@@ -5,6 +5,7 @@ namespace App\Models\Traits\Relations;
 use App\Models\Forum;
 use App\Models\User;
 use App\Models\ThreadReply;
+use App\Models\ForumSubscription;
 // use \Znck\Eloquent\Traits\BelongsToThrough; // Docs: https://github.com/staudenmeir/belongs-to-through
 // use \Staudenmeir\EloquentHasManyDeep\HasRelationships; // Docs: https://github.com/staudenmeir/eloquent-has-many-deep
 
@@ -24,6 +25,11 @@ trait ThreadRelations
     public function threadReplies()
     {
     	return $this->hasMany(ThreadReply::class);
+    }
+
+    public function forumSubscriptions()
+    {
+        return $this->morphMany(ForumSubscription::class, 'subscriptionable');
     }
 
 }

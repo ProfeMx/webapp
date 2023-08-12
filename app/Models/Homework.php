@@ -48,6 +48,13 @@ class Homework extends Model
 
     public $loadable_relations = [];
 
+    public $allowed_types = [
+        'text',
+        'file',
+        'text_file',
+        'offline',
+    ];
+
     /*
     protected static function newFactory()
     {

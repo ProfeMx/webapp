@@ -18,7 +18,7 @@ trait ForumRelations
 
     public function forumSubscriptions()
     {
-    	return $this->hasMany(ForumSubscription::class);
+        return $this->morphMany(ForumSubscription::class, 'subscriptionable');
     }
 
     public function threads()

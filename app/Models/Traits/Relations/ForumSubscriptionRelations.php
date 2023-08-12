@@ -13,9 +13,9 @@ trait ForumSubscriptionRelations
     	return $this->belongsTo(User::class);
     }
 
-    public function forum()
+    public function subscriptionable()
     {
-    	return $this->belongsTo(Forum::class);
+    	return $this->morphTo();
     }
 
 }
