@@ -7,30 +7,60 @@ namespace App\Models\Traits\Assignments;
 trait PathAssignment
 {
 
-	public function assignModel($request)
+	public function assignCareer($request)
 	{
 
-        $operationResult = $this->model()->syncWithoutDetaching([
-            $request->model_id => [
-            	// Pivot values
+        $operationResult = $this->careers()->syncWithoutDetaching([
+            $request->career_id => [
+            	'order' => 0
             ]
         ]);
 
         return response()->json([
-        	'model_id' => $request->model_id,
+        	'career_id' => $request->career_id,
         	'path_id' => $request->path_id,
         	'operation' => $operationResult
         ]);
 
 	}
 
-	public function deallocateModel($request)
+	public function deallocateCareer($request)
 	{
 
-		$operationResult = $this->model()->detach($request->model_id);
+		$operationResult = $this->careers()->detach($request->career_id);
 
 		return response()->json([
-        	'model_id' => $request->model_id,
+        	'career_id' => $request->career_id,
+        	'path_id' => $request->path_id,
+        	'operation' => $operationResult
+        ]);
+
+	}
+
+	public function assignCourse($request)
+	{
+
+        $operationResult = $this->courses()->syncWithoutDetaching([
+            $request->course_id => [
+            	'order' => 0
+            ]
+        ]);
+
+        return response()->json([
+        	'course_id' => $request->course_id,
+        	'path_id' => $request->path_id,
+        	'operation' => $operationResult
+        ]);
+
+	}
+
+	public function deallocateCourse($request)
+	{
+
+		$operationResult = $this->courses()->detach($request->course_id);
+
+		return response()->json([
+        	'course_id' => $request->course_id,
         	'path_id' => $request->path_id,
         	'operation' => $operationResult
         ]);

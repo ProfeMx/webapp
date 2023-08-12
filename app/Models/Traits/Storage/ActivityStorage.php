@@ -8,7 +8,11 @@ trait ActivityStorage
     public function createModel($request)
     {
 
-        $activity = $this->create($request->only($this->creatable));
+        $order = self::where('lesson_id', $request->lesson_id)->count();
+
+        $activity = $this->create($request->only($this->creatable) + [
+            'order' => ++$order
+        ]);
 
         return $activity;
 
@@ -23,6 +27,7 @@ trait ActivityStorage
 
     }
 
+    /*
     public function updateModelMetas($request)
     {
 
@@ -31,6 +36,7 @@ trait ActivityStorage
         return $this;
 
     }
+    */
 
     public function deleteModel()
     {

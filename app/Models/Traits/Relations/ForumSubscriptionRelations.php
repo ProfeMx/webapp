@@ -8,6 +8,14 @@ namespace App\Models\Traits\Relations;
 trait ForumSubscriptionRelations
 {
 	
-    
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
+
+    public function forum()
+    {
+    	return $this->belongsTo(Forum::class);
+    }
 
 }

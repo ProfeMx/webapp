@@ -2,13 +2,19 @@
 
 namespace App\Models\Traits\Storage;
 
+use App\Models\LessonMeta;
+
 trait LessonStorage
 {
 
     public function createModel($request)
     {
 
-        $lesson = $this->create($request->only($this->creatable));
+        $order = self::where('section_id', $request->section_id)->count();
+
+        $lesson = $this->create($request->only($this->creatable) + [
+            'order' => ++$order
+        ]);
 
         $lesson->updateModelMetas($request);
 
@@ -30,7 +36,8 @@ trait LessonStorage
     public function updateModelMetas($request)
     {
 
-        $this->update_metas($request, self::class, 'lesson_id')->updatePayload();
+        $this->update_metas($request, LessonMeta::class, 'lesson_id')
+            ->updatePayload();
 
         return $this;
 

@@ -31,3 +31,9 @@ Route::delete('force-delete', 'CourseController@forceDelete')
 
 Route::post('export', 'CourseController@export')
 	->name('export');
+
+Route::post('assign-path', 'CourseController@assignPath')
+	->name('assign.path');
+
+Route::post('deallocate-path', 'CourseController@deallocatePath')
+	->name('deallocate.path');

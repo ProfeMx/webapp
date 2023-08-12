@@ -31,3 +31,9 @@ Route::delete('force-delete', 'CareerController@forceDelete')
 
 Route::post('export', 'CareerController@export')
 	->name('export');
+
+Route::post('assign-path', 'CareerController@assignPath')
+	->name('assign.path');
+
+Route::post('deallocate-path', 'CareerController@deallocatePath')
+	->name('deallocate.path');

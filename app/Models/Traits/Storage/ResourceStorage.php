@@ -8,7 +8,11 @@ trait ResourceStorage
     public function createModel($request)
     {
 
-        $resource = $this->create($request->only($this->creatable));
+        $order = self::where('lesson_id', $request->lesson_id)->count();
+
+        $resource = $this->create($request->only($this->creatable) + [
+            'order' => ++$order
+        ]);
 
         return $resource;
 

@@ -7,30 +7,30 @@ namespace App\Models\Traits\Assignments;
 trait CourseAssignment
 {
 
-	public function assignModel($request)
+	public function assignPath($request)
 	{
 
-        $operationResult = $this->model()->syncWithoutDetaching([
-            $request->model_id => [
-            	// Pivot values
+        $operationResult = $this->paths()->syncWithoutDetaching([
+            $request->path_id => [
+            	'order' => 0
             ]
         ]);
 
         return response()->json([
-        	'model_id' => $request->model_id,
+        	'path_id' => $request->path_id,
         	'course_id' => $request->course_id,
         	'operation' => $operationResult
         ]);
 
 	}
 
-	public function deallocateModel($request)
+	public function deallocatePath($request)
 	{
 
-		$operationResult = $this->model()->detach($request->model_id);
+		$operationResult = $this->paths()->detach($request->path_id);
 
 		return response()->json([
-        	'model_id' => $request->model_id,
+        	'path_id' => $request->path_id,
         	'course_id' => $request->course_id,
         	'operation' => $operationResult
         ]);

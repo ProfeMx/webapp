@@ -68,4 +68,14 @@ class CareerPolicy
         return false;
     }
 
+    public function assignPath(User $user, Career $career)
+    {
+        return false;
+    }
+
+    public function deallocatePath(User $user, Career $career)
+    {
+        return false;
+    }
+
 }

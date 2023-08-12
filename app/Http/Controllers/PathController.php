@@ -12,6 +12,10 @@ use App\Http\Requests\Path\DeleteRequest;
 use App\Http\Requests\Path\RestoreRequest;
 use App\Http\Requests\Path\ForceDeleteRequest;
 use App\Http\Requests\Path\ExportRequest;
+use App\Http\Requests\Path\AssignCareerRequest;
+use App\Http\Requests\Path\DeallocateCareerRequest;
+use App\Http\Requests\Path\AssignCourseRequest;
+use App\Http\Requests\Path\DeallocateCourseRequest;
 
 class PathController extends Controller
 {
@@ -67,6 +71,26 @@ class PathController extends Controller
     }
 
     public function export(ExportRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function assignCareer(AssignCareerRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function deallocateCareer(DeallocateCareerRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function assignCourse(AssignCourseRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function deallocateCourse(DeallocateCourseRequest $request)
     {
         return $request->handle();   
     }

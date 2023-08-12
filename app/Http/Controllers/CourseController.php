@@ -12,6 +12,8 @@ use App\Http\Requests\Course\DeleteRequest;
 use App\Http\Requests\Course\RestoreRequest;
 use App\Http\Requests\Course\ForceDeleteRequest;
 use App\Http\Requests\Course\ExportRequest;
+use App\Http\Requests\Course\AssignPathRequest;
+use App\Http\Requests\Course\DeallocatePathRequest;
 
 class CourseController extends Controller
 {
@@ -67,6 +69,16 @@ class CourseController extends Controller
     }
 
     public function export(ExportRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function assignPath(AssignPathRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function deallocatePath(DeallocatePathRequest $request)
     {
         return $request->handle();   
     }

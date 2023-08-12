@@ -8,7 +8,11 @@ trait SectionStorage
     public function createModel($request)
     {
 
-        $section = $this->create($request->only($this->creatable));
+        $order = self::where('course_id', $request->course_id)->count();
+
+        $section = $this->create($request->only($this->creatable) + [
+            'order' => ++$order
+        ]);
 
         return $section;
 

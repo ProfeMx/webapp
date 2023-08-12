@@ -31,3 +31,15 @@ Route::delete('force-delete', 'PathController@forceDelete')
 
 Route::post('export', 'PathController@export')
 	->name('export');
+
+Route::post('assign-career', 'PathController@assignCareer')
+	->name('assign.career');
+
+Route::post('deallocate-career', 'PathController@deallocateCareer')
+	->name('deallocate.career');
+
+Route::post('assign-course', 'PathController@assignCourse')
+	->name('assign.course');
+
+Route::post('deallocate-course', 'PathController@deallocateCourse')
+	->name('deallocate.course');

@@ -2,6 +2,8 @@
 
 namespace App\Models\Traits\Storage;
 
+use App\Models\EnrollmentMeta;
+
 trait EnrollmentStorage
 {
 
@@ -30,7 +32,8 @@ trait EnrollmentStorage
     public function updateModelMetas($request)
     {
 
-        $this->update_metas($request, self::class, 'enrollment_id')->updatePayload();
+        $this->update_metas($request, EnrollmentMeta::class, 'enrollment_id')
+            ->updatePayload();
 
         return $this;
 

@@ -10,15 +10,7 @@ trait CourseOperations
 
         return [
 
-            'data' => [
-
-                'description' => $this->meta('description'),
-
-                'youtube' => $this->meta('youtube'),
-
-                'vimeo' => $this->meta('vimeo'),
-
-            ]
+            'description' => $this->meta('description'),
 
         ];
 

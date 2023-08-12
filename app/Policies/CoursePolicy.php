@@ -68,4 +68,14 @@ class CoursePolicy
         return false;
     }
 
+    public function assignPath(User $user)
+    {
+        return false;
+    }
+
+    public function deallocatePath(User $user)
+    {
+        return false;
+    }
+
 }

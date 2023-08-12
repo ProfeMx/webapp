@@ -2,6 +2,8 @@
 
 namespace App\Models\Traits\Storage;
 
+use App\Models\QuizMeta;
+
 trait QuizStorage
 {
 
@@ -30,7 +32,8 @@ trait QuizStorage
     public function updateModelMetas($request)
     {
 
-        $this->update_metas($request, self::class, 'quiz_id')->updatePayload();
+        $this->update_metas($request, QuizMeta::class, 'quiz_id')
+            ->updatePayload();
 
         return $this;
 

@@ -48,8 +48,6 @@ class Course extends Model
 
     protected $editable_metas = [
         'description',
-        'youtube',
-        'vimeo',
     ];
 
     public $loadable_relations = [];

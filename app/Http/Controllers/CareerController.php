@@ -12,6 +12,8 @@ use App\Http\Requests\Career\DeleteRequest;
 use App\Http\Requests\Career\RestoreRequest;
 use App\Http\Requests\Career\ForceDeleteRequest;
 use App\Http\Requests\Career\ExportRequest;
+use App\Http\Requests\Career\AssignPathRequest;
+use App\Http\Requests\Career\DeallocatePathRequest;
 
 class CareerController extends Controller
 {
@@ -67,6 +69,16 @@ class CareerController extends Controller
     }
 
     public function export(ExportRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function assignPath(AssignPathRequest $request)
+    {
+        return $request->handle();   
+    }
+
+    public function deallocatePath(DeallocatePathRequest $request)
     {
         return $request->handle();   
     }
