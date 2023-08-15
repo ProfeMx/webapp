@@ -21,4 +21,11 @@ trait UserOperations
 
     }
 
+    public function isAdmin()
+    {
+
+        return $this->id === 1;
+
+    }
+
 }

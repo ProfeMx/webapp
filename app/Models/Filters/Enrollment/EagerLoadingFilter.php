@@ -41,6 +41,7 @@ class EagerLoadingFilter
             $query->with(['certificate']);
 
         }
+
         /*
 
         if ($request->load_relation == 1 || $request->load_relation == true) {

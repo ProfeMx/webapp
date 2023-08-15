@@ -28,7 +28,12 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'nullable|string|max:255',
+            'status' => [
+                'nullable',
+                Rule::in((new Activity)->allowed_status)
+            ],
+            'weight' => 'nullable|numeric', 
             'activity_id' => 'required|numeric'
         ];
     }

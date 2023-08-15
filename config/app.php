@@ -185,6 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
-    'excel_view' => 'excel'
+    'excel_view' => 'excel.'
 
 ];

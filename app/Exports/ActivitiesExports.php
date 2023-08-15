@@ -20,16 +20,13 @@ class ActivitiesExports implements FromView
     }
 
     public function view(): View
-    {
-        return view(
-            config(
-                'app.excel_view', 
-                'app::excel.'
-            ) . 'activity', 
-            [
-                'activities' => $this->getQuery()
-            ]
-        );
+    {   
+
+        $vewName = config('app.excel_view', 'app::excel.') . 'activity';
+
+        return view($viewName, [
+            'activities' => $this->getQuery()
+        ]);
     }
 
     public function getQuery()

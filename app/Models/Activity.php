@@ -57,9 +57,12 @@ class Activity extends Model
 
     protected $editable_metas = [];
 
-    public $loadable_relations = [];
+    public $loadable_relations = [
+        'lesson',
+        'activityable',
+    ];
 
-    public $allowed_type = [
+    public $allowed_types = [
         'quiz',
         'homework',
     ];
@@ -67,6 +70,11 @@ class Activity extends Model
     public $allowed_status = [
         'public',
         'draft',
+    ];
+
+    public $allowed_activityables = [
+        'App\\Models\\Homework',
+        'App\\Models\\Quiz',
     ];
 
 }
