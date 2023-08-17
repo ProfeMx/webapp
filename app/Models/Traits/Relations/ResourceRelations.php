@@ -16,7 +16,7 @@ trait ResourceRelations
 	
     public function resourceable()
     {
-    	return $this->morphTo()
+    	return $this->morphTo();
     }
 
 }

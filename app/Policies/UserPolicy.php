@@ -26,7 +26,7 @@ class UserPolicy
     public function index(User $user)
     {
 
-        // Es posible que esto deba verificarse más adelante. 
+        // PENDIENTE: Es posible que esto deba verificarse más adelante. 
         return false;
 
     }

@@ -30,9 +30,9 @@ class CreateRequest extends FormRequest
          * Esto se debe determinar más adelante. Por ahora start_at va a ser now() y end_at va a ser null, 
          * pero esto solo es provicional.
          **/
-        $start_at => now();
+        $start_at = now();
 
-        $end_at => null;
+        $end_at = null;
 
         /**
          * En este punto se debe llamar a la clase EnrollmentProcessor para obtener datos como:

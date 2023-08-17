@@ -16,7 +16,7 @@ trait ActivityRelations
 
     public function activityable()
     {
-    	return $this->morphTo()
+    	return $this->morphTo();
     }
 
 }

@@ -28,7 +28,7 @@ class AssignPathRequest extends FormRequest
     public function rules()
     {
         return [
-            'path_id' => 'required|numeric|exists:paths,id'
+            'path_id' => 'required|numeric|exists:paths,id',
             'career_id' => 'required|numeric'
         ];
     }
