@@ -27,7 +27,8 @@ class AttemptsExports implements FromView
                 'app::excel.'
             ) . 'attempt', 
             [
-                'attempts' => $this->getQuery()
+                'attempts' => $this->getQuery(),
+                'exportCols' => Attempt::$exportCols,
             ]
         );
     }

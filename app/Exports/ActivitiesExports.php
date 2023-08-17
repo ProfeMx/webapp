@@ -25,7 +25,8 @@ class ActivitiesExports implements FromView
         $vewName = config('app.excel_view', 'app::excel.') . 'activity';
 
         return view($viewName, [
-            'activities' => $this->getQuery()
+            'activities' => $this->getQuery(),
+            'exportCols' => Activity::$exportCols,
         ]);
     }
 

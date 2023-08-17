@@ -39,6 +39,11 @@ class Note extends Model
         'content',
     ];
 
+    public static $exportCols = [
+        'title',
+        'content',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

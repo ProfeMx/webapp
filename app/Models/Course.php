@@ -40,6 +40,11 @@ class Course extends Model
         'status',
     ];
 
+    public static $exportCols = [
+        'name',
+        'status',
+    ];
+
     protected $casts = [
         'payload' => 'json'
     ];

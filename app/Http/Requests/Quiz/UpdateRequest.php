@@ -28,7 +28,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            // Es posible que se deba definir un mecanismo para la generación de versiones SemVer
             'quiz_id' => 'required|numeric'
         ];
     }

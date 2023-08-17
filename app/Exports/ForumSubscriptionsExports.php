@@ -27,7 +27,8 @@ class ForumSubscriptionsExports implements FromView
                 'app::excel.'
             ) . 'forum_subscription', 
             [
-                'forum_subscriptions' => $this->getQuery()
+                'forum_subscriptions' => $this->getQuery(),
+                'exportCols' => ForumSubscription::$exportCols,
             ]
         );
     }

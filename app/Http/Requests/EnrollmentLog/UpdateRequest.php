@@ -28,7 +28,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type' => 'required',
+            'dedication' => 'required',
             'enrollment_log_id' => 'required|numeric'
         ];
     }

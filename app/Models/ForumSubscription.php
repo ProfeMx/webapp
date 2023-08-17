@@ -42,6 +42,13 @@ class ForumSubscription extends Model
         'status',
     ];
 
+    public static $exportCols = [
+        'status',
+        'user_id',
+        'subscriptionable_id',
+        'subscriptionable_type',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

@@ -27,7 +27,8 @@ class ThreadsExports implements FromView
                 'app::excel.'
             ) . 'thread', 
             [
-                'threads' => $this->getQuery()
+                'threads' => $this->getQuery(),
+                'exportCols' => Thread::$exportCols,
             ]
         );
     }

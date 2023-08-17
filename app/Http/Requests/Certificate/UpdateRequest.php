@@ -13,7 +13,11 @@ class UpdateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //
+        /** Acá mismo se debe considerar si se puede actualizar algo de esto:
+         *  - grade
+         *  - dedication
+         *  - template, etc.
+         */ 
     }
 
     public function authorize()

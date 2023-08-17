@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('lesson_metas', function (Blueprint $table) {
             $table->id();
+            $table->string('key');
+            $table->longText('value');
+            $table->foreignId('lesson_id');
             $table->timestamps();
         });
     }

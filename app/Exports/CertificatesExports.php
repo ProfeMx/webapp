@@ -27,7 +27,8 @@ class CertificatesExports implements FromView
                 'app::excel.'
             ) . 'certificate', 
             [
-                'certificates' => $this->getQuery()
+                'certificates' => $this->getQuery(),
+                'exportCols' => Certificate::$exportCols,
             ]
         );
     }

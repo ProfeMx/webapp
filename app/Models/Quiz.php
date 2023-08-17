@@ -40,6 +40,11 @@ class Quiz extends Model
         'version',
     ];
 
+    public static $exportCols = [
+        'title',
+        'version', 
+    ];
+
     protected $casts = [
         'payload' => 'json'
     ];

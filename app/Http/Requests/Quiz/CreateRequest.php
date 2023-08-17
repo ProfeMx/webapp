@@ -13,7 +13,12 @@ class CreateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //
+        $version = '1.0.0';
+
+        $this->merge([
+            'version' => $version
+        ]);
+
     }
 
     public function authorize()
@@ -26,7 +31,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'version' => 'required',  
         ];
     }
 

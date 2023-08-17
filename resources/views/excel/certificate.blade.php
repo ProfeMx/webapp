@@ -1,19 +1,21 @@
 <table>
     <thead>
         <tr>
-            <th>id</th>
+            @foreach($exportCols as $col)
 
-            <th>created_at</th>
-            <th>updated_at</th>
+                <th>{{ $col }}</th>
+
+            @endforeach
         </tr>
     </thead>
     <tbody>
         @foreach($certificates as $certificate)
             <tr>
-                <td>{{ $certificate->id }}</td>
+                @foreach($exportCols as $col)
 
-                <td>{{ $certificate->created_at }}</td>
-                <td>{{ $certificate->updated_at }}</td>
+                    <td>{{ $certificate->$col }}</td>
+
+                @endforeach
             </tr>
         @endforeach
     </tbody>

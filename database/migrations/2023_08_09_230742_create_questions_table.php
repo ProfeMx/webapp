@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('version');
             $table->string('type'); // tf, select, option, short
             $table->unsignedInteger('order');
+            $table->decimal('weight', 3,2)->nullable();
             $table->longText('payload')->nullable();
             $table->timestamps();
             $table->softDeletes();

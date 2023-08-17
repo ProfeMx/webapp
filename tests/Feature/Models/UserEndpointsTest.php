@@ -2,12 +2,17 @@
 
 namespace App\Tests\Feature\Models;
 
+use Illuminate\Support\Facades\Auth; // LPG: Incluir esto en las plantillas
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Tests\TestCase;
+use Tests\TestCase; // 1. LPG: Corregir el Namespace cuando no son paquetes, sin el App
 
 class UserEndpointsTest extends TestCase
 {
+
+    // 2. LPG: Añadir estos traits a las plantillas
+    use RefreshDatabase,
+        WithFaker;
 
     public function test_user_policies_endpoint()
     {
@@ -15,7 +20,7 @@ class UserEndpointsTest extends TestCase
         $user = \App\Models\User::factory()->create();
         
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -24,6 +29,7 @@ class UserEndpointsTest extends TestCase
             'id' => $user->id
         ];
 
+        // 3. LPG: También checar esto porque en los paquetes añade dos barras diagonales
         $this->json('GET', '/api/user/policies', $payload, $headers)
             ->assertStatus(200);
 
@@ -32,7 +38,7 @@ class UserEndpointsTest extends TestCase
     public function test_user_policy_endpoint()
     {
         $headers = [
-            'Authorization' => config('test.token'),
+            //'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -53,7 +59,7 @@ class UserEndpointsTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -70,6 +76,8 @@ class UserEndpointsTest extends TestCase
     public function test_user_index_guest_endpoint()
     {
 
+        Auth::guard('web')->logout(); // LPG: Añadir esto en las plantillas
+
         $headers = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
@@ -83,14 +91,14 @@ class UserEndpointsTest extends TestCase
             ->assertStatus(401);
             
     }
-    
+
     public function test_user_show_auth_endpoint()
     {
 
-        $user = \App\Models\User::latest()->first();
+        $user = \App\Models\User::factory()->create(); // LPG: Cambiar por esto
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -107,7 +115,9 @@ class UserEndpointsTest extends TestCase
     public function test_user_show_guest_endpoint()
     {
 
-        $user = \App\Models\User::latest()->first();
+        Auth::guard('web')->logout(); // LPG: Añadir esto en las plantillas
+
+        $user = \App\Models\User::factory()->create(); // LPG: Cambiar por esto
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -126,7 +136,7 @@ class UserEndpointsTest extends TestCase
     public function test_user_create_endpoint()
     {
 
-        $user = \App\Models\User::first();
+        // $user = \App\Models\User::first(); // LPG: Eliminar esto, no es necesario
 
         $headers = [
             'Authorization' => config('test.token'),
@@ -134,7 +144,11 @@ class UserEndpointsTest extends TestCase
             'Accept' => 'application/json'
         ];  
 
-        $payload = \App\Models\User::factory()->make()->getAttributes();
+        $payload = \App\Models\User::factory()->make()->getAttributes() + [
+            'password_confirmation' => 'password'
+        ];
+
+        $payload['password'] = 'password';
 
         $this->json('POST', '/api/user/create', $payload, $headers)
             ->assertStatus(201);
@@ -165,10 +179,10 @@ class UserEndpointsTest extends TestCase
     public function test_user_delete_endpoint()
     {
 
-        $user = \App\Models\User::latest()->first();
+        $user = \App\Models\User::factory()->create(); // LPG: Cambiar por esto
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -185,10 +199,10 @@ class UserEndpointsTest extends TestCase
     public function test_user_restore_endpoint()
     {
 
-        $user = \App\Models\User::first();
+        $user = \App\Models\User::factory()->create(); // LPG: Cambiar por esto
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -205,10 +219,10 @@ class UserEndpointsTest extends TestCase
     public function test_user_force_delete_endpoint()
     {
 
-        $user = \App\Models\User::latest()->first();
+        $user = \App\Models\User::factory()->create(); // LPG: Cambiar por esto
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -222,11 +236,15 @@ class UserEndpointsTest extends TestCase
             
     }
 
+    /*
+    // Aun hay cosas pendientes como:
+        // - Configruar paquete de notificaciones
+        // - Configurar AWS
     public function test_user_export_endpoint()
     {   
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -239,5 +257,6 @@ class UserEndpointsTest extends TestCase
             ->assertStatus(200);
             
     }
+    */
 
 }

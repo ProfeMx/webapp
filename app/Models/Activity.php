@@ -51,6 +51,16 @@ class Activity extends Model
         'weight',
     ];
 
+    public static $exportCols = [
+        'name',
+        'type',
+        'status',
+        'weight',
+        'lesson_id',
+        'activityable_id',
+        'activityable_type'
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

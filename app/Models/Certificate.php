@@ -37,6 +37,11 @@ class Certificate extends Model
 
     protected $updatable = [];
 
+    public static $exportCols = [
+        'code',
+        'enrollment_id',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

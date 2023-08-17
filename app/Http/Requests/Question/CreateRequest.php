@@ -18,15 +18,17 @@ class CreateRequest extends FormRequest
 
     public function authorize()
     {
-
         return $this->user()->can('create', Question::class);
-
     }
 
     public function rules()
     {
         return [
-            //
+            'version' => 'required',
+            'type' => 'required',
+            'order' => 'required',
+            'weight' => 'required',
+            'quiz_id' => 'required',
         ];
     }
 

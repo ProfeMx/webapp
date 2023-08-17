@@ -25,10 +25,12 @@ class Submission extends Model
         SubmissionMutators;
         
     protected $fillable = [
+        'status',
         'content',
         'submission_file',
         'grade',
         'grade_override',
+        'weight', // El peso que agrega a la calificación final del curso
         'feedback',
         'feedback_file',
         'homework_id',
@@ -36,6 +38,23 @@ class Submission extends Model
     ];
 
     protected $creatable = [
+        'status',
+        'content',
+        'submission_file',
+        'homework_id',
+        'enrollment_id',
+    ];
+
+    protected $updatable = [
+        'status',
+        'content',
+        'submission_file',
+        'grade_override',
+        'feedback_file',
+    ];
+
+    public static $exportCols = [
+        'status',
         'content',
         'submission_file',
         'grade',
@@ -43,16 +62,7 @@ class Submission extends Model
         'feedback',
         'feedback_file',
         'homework_id',
-        'enrollment_id',
-    ];
-
-    protected $updatable = [
-        'content',
-        'submission_file',
-        'grade',
-        'grade_override',
-        'feedback',
-        'feedback_file',
+        'enrollment_id', 
     ];
 
     protected $casts = [];
@@ -62,6 +72,13 @@ class Submission extends Model
     protected $editable_metas = [];
 
     public $loadable_relations = [];
+
+    public static $allowed_status = [
+        'draft',
+        'send',
+        'reviewed',
+        'ignore', // Cuando se permite mas de un envío, y este envío es ignorado para la calificación
+    ];
 
     /*
     protected static function newFactory()

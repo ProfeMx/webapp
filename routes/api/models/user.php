@@ -31,3 +31,7 @@ Route::delete('force-delete', 'UserController@forceDelete')
 
 Route::post('export', 'UserController@export')
 	->name('export');
+
+// Ruta para cambiar el email
+
+// Ver si laravel-auth ofrece la ruta para cambiar la contraseña

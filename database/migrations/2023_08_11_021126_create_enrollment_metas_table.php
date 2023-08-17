@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('enrollment_metas', function (Blueprint $table) {
             $table->id();
+            $table->string('key');
+            $table->longText('value');
+            $table->foreignId('enrollment_id');
             $table->timestamps();
         });
     }

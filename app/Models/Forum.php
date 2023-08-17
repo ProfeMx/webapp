@@ -38,6 +38,11 @@ class Forum extends Model
         'name',
     ];
 
+    public static $exportCols = [
+        'name',
+        'course_id',
+    ];
+    
     protected $casts = [];
 
     protected $protected_metas = [];

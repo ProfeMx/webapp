@@ -1,19 +1,21 @@
 <table>
     <thead>
         <tr>
-            <th>id</th>
+            @foreach($exportCols as $col)
 
-            <th>created_at</th>
-            <th>updated_at</th>
+                <th>{{ $col }}</th>
+
+            @endforeach
         </tr>
     </thead>
     <tbody>
         @foreach($quizzes as $quiz)
             <tr>
-                <td>{{ $quiz->id }}</td>
+                @foreach($exportCols as $col)
 
-                <td>{{ $quiz->created_at }}</td>
-                <td>{{ $quiz->updated_at }}</td>
+                    <td>{{ $quiz->$col }}</td>
+
+                @endforeach
             </tr>
         @endforeach
     </tbody>

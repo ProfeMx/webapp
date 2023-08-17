@@ -28,7 +28,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'nullable|string|max:255',
+            'status' => [
+                'nullable',
+                Rule::in(Resource::$allowed_status)
+            ],
             'resource_id' => 'required|numeric'
         ];
     }

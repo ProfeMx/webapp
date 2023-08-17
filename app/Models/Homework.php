@@ -40,6 +40,11 @@ class Homework extends Model
         'type',
     ];
 
+    public static $exportCols = [
+        'title',
+        'type',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

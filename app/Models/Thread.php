@@ -43,6 +43,13 @@ class Thread extends Model
         'content',
     ];
 
+    public static $exportCols = [
+        'title',
+        'content',
+        'forum_id',
+        'user_id', 
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

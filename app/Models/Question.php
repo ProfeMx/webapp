@@ -28,7 +28,9 @@ class Question extends Model
         'version',
         'type',
         'order',
+        'weight',
         'payload',
+        'quiz_id',
     ];
 
     protected $creatable = [
@@ -38,6 +40,11 @@ class Question extends Model
 
     protected $updatable = [
         'version',
+    ];
+
+    public static $exportCols = [
+        'version',
+        'type', 
     ];
 
     protected $casts = [

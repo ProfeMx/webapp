@@ -27,7 +27,8 @@ class UsersExports implements FromView
                 'app::excel.'
             ) . 'user', 
             [
-                'users' => $this->getQuery()
+                'users' => $this->getQuery(),
+                'exportCols' => User::$exportCols,
             ]
         );
     }

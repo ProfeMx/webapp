@@ -38,7 +38,12 @@ class Section extends Model
 
     protected $updatable = [
         'name',
+    ];
+
+    public static $exportCols = [
+        'name',
         'order',
+        'course_id' 
     ];
 
     protected $casts = [];

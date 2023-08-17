@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('quiz_metas', function (Blueprint $table) {
             $table->id();
+            $table->string('key');
+            $table->longText('value');
+            $table->foreignId('quiz_id');
             $table->timestamps();
         });
     }

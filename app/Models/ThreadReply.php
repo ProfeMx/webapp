@@ -40,6 +40,12 @@ class ThreadReply extends Model
         'content',
     ];
 
+    public static $exportCols = [
+        'content',
+        'thread_id',
+        'user_id', 
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

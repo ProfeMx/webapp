@@ -27,7 +27,8 @@ class LessonsExports implements FromView
                 'app::excel.'
             ) . 'lesson', 
             [
-                'lessons' => $this->getQuery()
+                'lessons' => $this->getQuery(),
+                'exportCols' => Lesson::$exportCols,
             ]
         );
     }

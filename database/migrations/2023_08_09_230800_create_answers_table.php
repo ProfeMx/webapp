@@ -15,13 +15,24 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('version');
+
+            $table->string('status');
             $table->longText('content');
+            $table->unsignedInteger('order')->nullable();
+            
             $table->decimal('grade', 3,2)->nullable();
             $table->decimal('grade_override', 3, 2)->nullable();
+            $table->decimal('weight', 3,2)->nullable();
+            
+            $table->text('feedback')->nullable();
+            $table->text('feedback_override')->nullable();
+            
+            $table->string('question_version');
             $table->longText('question_data')->nullable(); // Temporal 
             $table->foreignId('question_id');
+            
             $table->foreignId('attempt_id');
+            
             $table->timestamps();
             $table->softDeletes();
         });

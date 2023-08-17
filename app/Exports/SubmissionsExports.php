@@ -27,7 +27,8 @@ class SubmissionsExports implements FromView
                 'app::excel.'
             ) . 'submission', 
             [
-                'submissions' => $this->getQuery()
+                'submissions' => $this->getQuery(),
+                'exportCols' => Submission::$exportCols,
             ]
         );
     }

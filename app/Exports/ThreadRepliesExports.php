@@ -27,7 +27,8 @@ class ThreadRepliesExports implements FromView
                 'app::excel.'
             ) . 'thread_reply', 
             [
-                'thread_replies' => $this->getQuery()
+                'thread_replies' => $this->getQuery(),
+                'exportCols' => ThreadReply::$exportCols,
             ]
         );
     }

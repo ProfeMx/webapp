@@ -38,6 +38,11 @@ class File extends Model
         'title',
     ];
 
+    public static $exportCols = [
+        'title',
+        'path',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

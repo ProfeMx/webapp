@@ -43,8 +43,11 @@ class User extends Authenticatable
 
     protected $updatable = [
         'name',
-        'email',
-        'password',
+    ];
+
+    public static $exportCols = [
+        'name',
+        'email', 
     ];
 
     protected $hidden = [

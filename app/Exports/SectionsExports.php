@@ -27,7 +27,8 @@ class SectionsExports implements FromView
                 'app::excel.'
             ) . 'section', 
             [
-                'sections' => $this->getQuery()
+                'sections' => $this->getQuery(),
+                'exportCols' => Section::$exportCols,
             ]
         );
     }

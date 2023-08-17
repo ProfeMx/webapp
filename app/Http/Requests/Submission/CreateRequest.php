@@ -26,7 +26,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'content' => 'nullable|string|max:10000',
+            'submission_file' => 'nullable|file|max:2048',
+            'homework_id' => 'required|integer|exists:homeworks,id',
+            'enrollment_id' => 'required|integer|exists:homeworks,id',
         ];
     }
 

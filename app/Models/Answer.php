@@ -25,29 +25,74 @@ class Answer extends Model
         AnswerMutators;
         
     protected $fillable = [
-        'version',
+
+        'status',
         'content',
+        'order',
+
         'grade',
         'grade_override',
+        'weight',
+
+        'feedback',
+        'feedback_override',
+        
+        'question_version',
         'question_data',
         'question_id',
+        
         'attempt_id',
+        
     ];
 
     protected $creatable = [
-        'version',
+
+        'status',
         'content',
-        'grade_override',
+        'order',
+
+        'grade',
+
+        'weight',
+
+        'feedback',
+
+        'question_version',
         'question_data',
         'question_id',
+
         'attempt_id',
     ];
 
     protected $updatable = [
-        'version',
-        'content',
+
         'grade_override',
-        'question_data',
+
+        'weight',
+
+        'feedback_override',
+
+    ];
+
+    public static $exportCols = [
+
+        'status',
+        'content',
+        'order',
+
+        'grade',
+        'grade_override',
+
+        'weight',
+
+        'feedback',
+        'feedback_override',
+        
+        'question_version',
+        'question_id',
+        
+        'attempt_id',
+
     ];
 
     protected $casts = [];
@@ -56,7 +101,17 @@ class Answer extends Model
 
     protected $editable_metas = [];
 
+    public $allowed_status = [
+        'not_answered',
+        'answered',
+        'flagged',
+        'correct',
+        'incorrect',
+        'partially_correct',
+    ];
+
     public $loadable_relations = [];
+
 
     /*
     protected static function newFactory()

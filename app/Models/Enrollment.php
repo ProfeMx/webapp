@@ -35,17 +35,18 @@ class Enrollment extends Model
         'course_id',
         'user_id',
         'role',
+        'start_at', // Se usa para indicar cuando inicia la inscripción fecha posterior o anterior a la creación de la misma
+        'end_at', // Fecha de expiración de la inscripción
     ];
 
     protected $creatable = [
         'type',
         'status',
-        'grade_override',
-        'dedication_override',
-        'payload',
         'course_id',
         'user_id',
         'role',
+        'start_at',
+        'end_at',
     ];
 
     protected $updatable = [
@@ -54,10 +55,26 @@ class Enrollment extends Model
         'grade_override',
         'dedication_override',
         'role',
+        'start_at',
+        'end_at',
+    ];
+
+    public static $exportCols = [
+        'type',
+        'status',
+        'grade_override',
+        'dedication_override',
+        'course_id',
+        'user_id',
+        'role',
+        'start_at',
+        'end_at',
     ];
 
     protected $casts = [
-        'payload' => 'json'
+        'payload' => 'json',
+        'start_at' => 'datetime',
+        'end_at' => 'datetime',
     ];
 
     protected $protected_metas = [];
@@ -66,18 +83,28 @@ class Enrollment extends Model
 
     public $loadable_relations = [];
 
-    public $allowed_type = [
+    public $allowed_types = [
         'free',
+        'manual',
+        'import',
         'subscription',
         'payment',
         'external_database',
     ];
 
     public $allowed_status = [
-        'active',
-        'pending',
-        'suspended',
-        'finished',
+        'active', // Alumno activo
+        'pending', // Se requiere alguna acción, no puede ver el curso
+        'suspended', // Ya no puede ver el contenido del curso
+        'finished', // Aún puede ver el contenido del curso. Ya no se registra progreso ni eventos. Puede reiniciar.
+        'close', // Ya no puede ver el contenido del curso. Puede comprar de nuevo
+    ];
+
+    public $allowed_roles = [
+        'edit_teacher',
+        'teacher',
+        'student',
+        'guest'
     ];
 
 }

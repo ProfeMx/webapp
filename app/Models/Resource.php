@@ -48,6 +48,15 @@ class Resource extends Model
         'status',
     ];
 
+    public static $exportCols = [
+        'name',
+        'type',
+        'status',
+        'lesson_id',
+        'resourceable_id',
+        'resourceable_type', 
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];
@@ -56,13 +65,13 @@ class Resource extends Model
 
     public $loadable_relations = [];
 
-    public $allowed_type = [
+    public static $allowed_types = [
         'note',
         'video',
         'file',
     ];
 
-    public $allowed_status = [
+    public static $allowed_status = [
         'public',
         'draft',
     ];

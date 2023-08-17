@@ -28,7 +28,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'grade_override' => 'nullable|numeric',
+            'weight' => 'nullable|numeric',
+            'feedback_override'=> 'nullable|string|max:1500',
             'answer_id' => 'required|numeric'
         ];
     }

@@ -1,19 +1,21 @@
 <table>
     <thead>
         <tr>
-            <th>id</th>
+            @foreach($exportCols as $col)
 
-            <th>created_at</th>
-            <th>updated_at</th>
+                <th>{{ $col }}</th>
+
+            @endforeach
         </tr>
     </thead>
     <tbody>
         @foreach($thread_replies as $thread_reply)
             <tr>
-                <td>{{ $thread_reply->id }}</td>
+                @foreach($exportCols as $col)
 
-                <td>{{ $thread_reply->created_at }}</td>
-                <td>{{ $thread_reply->updated_at }}</td>
+                    <td>{{ $thread_reply->$col }}</td>
+
+                @endforeach
             </tr>
         @endforeach
     </tbody>

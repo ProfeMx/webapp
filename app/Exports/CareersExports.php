@@ -27,7 +27,8 @@ class CareersExports implements FromView
                 'app::excel.'
             ) . 'career', 
             [
-                'careers' => $this->getQuery()
+                'careers' => $this->getQuery(),
+                'exportCols' => Career::$exportCols,
             ]
         );
     }

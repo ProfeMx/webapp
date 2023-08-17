@@ -30,13 +30,17 @@ class Video extends Model
         'code',
     ];
 
-    protected $creatable = [
+    public $creatable = [
         'title',
         'source',
         'code',
     ];
 
     protected $updatable = [
+        'title',
+    ];
+
+    public static $exportCols = [
         'title',
         'source',
         'code',
@@ -49,6 +53,12 @@ class Video extends Model
     protected $editable_metas = [];
 
     public $loadable_relations = [];
+
+    public static $allowed_sources = [
+        'vimeo',
+        'cloudvideo',
+        'youtube',
+    ];
 
     /*
     protected static function newFactory()

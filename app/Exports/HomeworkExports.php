@@ -27,7 +27,8 @@ class HomeworkExports implements FromView
                 'app::excel.'
             ) . 'homework', 
             [
-                'homework' => $this->getQuery()
+                'homework' => $this->getQuery(),
+                'exportCols' => Homework::$exportCols,
             ]
         );
     }

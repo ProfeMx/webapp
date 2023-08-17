@@ -25,28 +25,51 @@ class Attempt extends Model
         AttemptMutators;
         
     protected $fillable = [
-        'version',
         'status',
+
         'grade',
         'grade_override',
+        'weight',
+
+        'feedback',
+        'feedback_override',
+
+        'quiz_version',
         'quiz_data',
         'quiz_id',
+        
         'enrollment_id',
     ];
 
     protected $creatable = [
-        'version',
-        'status',
-        'grade_override',
+        'quiz_version',
         'quiz_data',
         'quiz_id',
+        
         'enrollment_id',
     ];
 
     protected $updatable = [
-        'version',
-        'status',
+        'weight',
         'grade_override',
+        'feedback_override',
+    ];
+
+    public static $exportCols = [
+        'id',
+        'status',
+
+        'grade',
+        'grade_override',
+        'weight',
+        
+        'feedback',
+        'feedback_override',
+
+        'quiz_version',
+        'quiz_id',
+        
+        'enrollment_id',
     ];
 
     protected $casts = [];

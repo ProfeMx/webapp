@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreignId('course_id');
             $table->foreignId('user_id');
             $table->string('role');
+            $table->dateTime('start_at')->nullable();
+            $table->dateTime('end_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

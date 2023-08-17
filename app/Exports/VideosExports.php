@@ -27,7 +27,8 @@ class VideosExports implements FromView
                 'app::excel.'
             ) . 'video', 
             [
-                'videos' => $this->getQuery()
+                'videos' => $this->getQuery(),
+                'exportCols' => Video::$exportCols,
             ]
         );
     }

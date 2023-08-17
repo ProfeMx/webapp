@@ -27,7 +27,8 @@ class PathsExports implements FromView
                 'app::excel.'
             ) . 'path', 
             [
-                'paths' => $this->getQuery()
+                'paths' => $this->getQuery(),
+                'exportCols' => Path::$exportCols,
             ]
         );
     }

@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'content' => 'required|string|max:3000',
             'thread_reply_id' => 'required|numeric'
         ];
     }

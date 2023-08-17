@@ -26,7 +26,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type' => 'required',
+            'dedication' => 'required',
+            'enrollment_id' => 'required',
+            'lesson_id' => 'required',
         ];
     }
 

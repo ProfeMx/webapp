@@ -27,7 +27,8 @@ class AnswersExports implements FromView
                 'app::excel.'
             ) . 'answer', 
             [
-                'answers' => $this->getQuery()
+                'answers' => $this->getQuery(),
+                'exportCols' => Answer::$exportCols,
             ]
         );
     }

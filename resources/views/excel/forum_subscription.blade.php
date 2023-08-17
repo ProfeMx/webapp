@@ -1,19 +1,21 @@
 <table>
     <thead>
         <tr>
-            <th>id</th>
+            @foreach($exportCols as $col)
 
-            <th>created_at</th>
-            <th>updated_at</th>
+                <th>{{ $col }}</th>
+
+            @endforeach
         </tr>
     </thead>
     <tbody>
         @foreach($forum_subscriptions as $forum_subscription)
             <tr>
-                <td>{{ $forum_subscription->id }}</td>
+                @foreach($exportCols as $col)
 
-                <td>{{ $forum_subscription->created_at }}</td>
-                <td>{{ $forum_subscription->updated_at }}</td>
+                    <td>{{ $forum_subscription->$col }}</td>
+
+                @endforeach
             </tr>
         @endforeach
     </tbody>

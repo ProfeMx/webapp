@@ -26,7 +26,12 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'source' => [
+                'required',
+                Rule::in(Video::$allowed_sources)
+            ],
+            'code' => 'required|string|max:255',
         ];
     }
 

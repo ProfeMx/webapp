@@ -13,7 +13,10 @@ class UpdateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //
+        /**
+         * En caso de que el envio sea de tipo archivo, o que el request tenga un archivo
+         * se deberá procesar su sibida y almacenar en la variable submission_file
+         **/
     }
 
     public function authorize()
@@ -28,7 +31,10 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'content' => 'nullable|string|max:10000',
+            'submission_file' => 'nullable|file|max:2048',
+            'grade_override' => 'nullable|numeric',
+            'feedback_file' => 'nullable|string|1500',
             'submission_id' => 'required|numeric'
         ];
     }

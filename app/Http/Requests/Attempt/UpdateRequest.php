@@ -28,7 +28,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'weight' => 'required|numeric',
+            'grade_override' => 'required|numeric',
+            'feedback_override' => 'required|string',
             'attempt_id' => 'required|numeric'
         ];
     }

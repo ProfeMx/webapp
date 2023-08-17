@@ -27,7 +27,8 @@ class ForumsExports implements FromView
                 'app::excel.'
             ) . 'forum', 
             [
-                'forums' => $this->getQuery()
+                'forums' => $this->getQuery(),
+                'exportCols' => Forum::$exportCols,
             ]
         );
     }

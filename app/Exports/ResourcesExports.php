@@ -27,7 +27,8 @@ class ResourcesExports implements FromView
                 'app::excel.'
             ) . 'resource', 
             [
-                'resources' => $this->getQuery()
+                'resources' => $this->getQuery(),
+                'exportCols' => Resource::$exportCols,
             ]
         );
     }

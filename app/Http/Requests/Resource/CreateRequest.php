@@ -13,7 +13,16 @@ class CreateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //
+        $order = Resource::where('course_id', $this->course_id)->count();
+
+        // Es posible que en este apartado se tenga que definir las propiedades de 
+            // - resourceable_id 
+            // - resourceable_type
+
+        $this->merge([
+            'order' => ++$order
+        ]);
+
     }
 
     public function authorize()
@@ -26,7 +35,17 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'type' => [
+                'required',
+                Rule::in(Resource::$allowed_types)
+            ],
+            'status' => [
+                'required',
+                Rule::in(Resource::$allowed_status)
+            ],
+            'order' => 'required|numeric',
+            'lesson_id' => 'required|numeric|exists:lessons,id',
         ];
     }
 

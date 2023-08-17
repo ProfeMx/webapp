@@ -40,6 +40,12 @@ class Lesson extends Model
         'name',
     ];
 
+    public static $exportCols = [
+        'name',
+        'order',
+        'section_id',
+    ];
+
     protected $casts = [
         'payload' => 'json'
     ];

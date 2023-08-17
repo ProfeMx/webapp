@@ -27,7 +27,8 @@ class EnrollmentsExports implements FromView
                 'app::excel.'
             ) . 'enrollment', 
             [
-                'enrollments' => $this->getQuery()
+                'enrollments' => $this->getQuery(),
+                'exportCols' => Enrollment::$exportCols,
             ]
         );
     }

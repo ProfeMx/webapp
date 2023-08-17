@@ -39,6 +39,11 @@ class Career extends Model
         'description',
     ];
 
+    public static $exportCols = [
+        'name',
+        'description',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

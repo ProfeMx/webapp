@@ -26,7 +26,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
         ];
     }
 
@@ -46,7 +48,9 @@ class CreateRequest extends FormRequest
 
     protected function passedValidation()
     {
-        //
+        $this->merge([
+            'password' => bcrypt($this->password)
+        ]);
     }
 
     public function handle()

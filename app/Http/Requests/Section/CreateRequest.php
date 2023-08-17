@@ -13,7 +13,13 @@ class CreateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //
+        
+        $order = Section::where('course_id', $this->course_id)->count();
+
+        $this->merge([
+            'order' => ++$order
+        ]);
+
     }
 
     public function authorize()

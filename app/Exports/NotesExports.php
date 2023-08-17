@@ -27,7 +27,8 @@ class NotesExports implements FromView
                 'app::excel.'
             ) . 'note', 
             [
-                'notes' => $this->getQuery()
+                'notes' => $this->getQuery(),
+                'exportCols' => Note::$exportCols,
             ]
         );
     }

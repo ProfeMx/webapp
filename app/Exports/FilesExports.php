@@ -27,7 +27,8 @@ class FilesExports implements FromView
                 'app::excel.'
             ) . 'file', 
             [
-                'files' => $this->getQuery()
+                'files' => $this->getQuery(),
+                'exportCols' => File::$exportCols,
             ]
         );
     }

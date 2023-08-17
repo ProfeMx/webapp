@@ -43,6 +43,13 @@ class EnrollmentLog extends Model
         'dedication',
     ];
 
+    public static $exportCols = [
+        'type',
+        'dedication',
+        'enrollment_id',
+        'lesson_id',
+    ];
+
     protected $casts = [];
 
     protected $protected_metas = [];

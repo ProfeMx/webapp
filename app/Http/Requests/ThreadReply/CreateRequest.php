@@ -26,7 +26,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'content' => 'required|string|max:3000',
+            'thread_id' => 'required|numeric|exists:thread_replies,id',
+            'user_id' => 'required|numeric|exists:users,id',
         ];
     }
 
