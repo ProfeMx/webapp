@@ -18,11 +18,7 @@ class CreateRequest extends FormRequest
 
     public function authorize()
     {
-
-        return true; // QUITAR DESPUÉS
-
         return $this->user()->can('create', Course::class);
-
     }
 
     public function rules()
@@ -31,7 +27,7 @@ class CreateRequest extends FormRequest
             'name' => 'required|string|max:255',
             'status' => [
                 'required',
-                Rule::in((new Course)->allowed_status)
+                Rule::in(Course::$allowed_status)
             ]
         ];
     }
@@ -39,14 +35,19 @@ class CreateRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.required' => 'El nombre es obligatorio.',
+            'name.string' => 'El nombre debe ser una cadena de caracteres.',
+            'name.max' => 'El nombre no debe exceder los 255 caracteres.',
+            'status.required' => 'El estado es obligatorio.',
+            'status.in' => 'El estado seleccionado no es válido.',
         ];
     }
 
     public function attributes()
     {
         return [
-            //
+            'name' => 'Nombre',
+            'status' => 'Estado',
         ];
     }
 

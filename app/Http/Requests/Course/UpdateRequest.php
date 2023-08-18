@@ -31,7 +31,7 @@ class UpdateRequest extends FormRequest
             'name' => 'nullable|string|max:255',
             'status' => [
                 'nullable',
-                Rule::in((new Course)->allowed_status)
+                Rule::in(Course::$allowed_status)
             ],
             'course_id' => 'required|numeric'
         ];
@@ -40,14 +40,20 @@ class UpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.string' => 'El nombre debe ser una cadena de caracteres.',
+            'name.max' => 'El nombre no debe exceder los 255 caracteres.',
+            'status.in' => 'El estado seleccionado no es válido.',
+            'course_id.required' => 'El ID del curso es obligatorio.',
+            'course_id.numeric' => 'El ID del curso debe ser un valor numérico.',
         ];
     }
 
     public function attributes()
     {
         return [
-            //
+            'name' => 'Nombre',
+            'status' => 'Estado',
+            'course_id' => 'ID del Curso',
         ];
     }
 

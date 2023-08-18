@@ -25,7 +25,7 @@ class CoursePolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,7 +35,15 @@ class CoursePolicy
 
     public function view(User $user, Course $course)
     {
-        return false;
+
+        // Validaciones individuales
+
+            $a = $course->status == 'public';
+
+            $b = $course->status == 'archived';
+
+        return ($a || $b);
+
     }
 
     public function create(User $user)

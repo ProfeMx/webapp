@@ -57,7 +57,7 @@ class Course extends Model
 
     public $loadable_relations = [];
 
-    public $allowed_status = [
+    public static $allowed_status = [
         'public',
         'draft',
         'archived',

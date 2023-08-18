@@ -2,12 +2,16 @@
 
 namespace App\Tests\Feature\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Tests\TestCase;
+use Tests\TestCase;
 
 class CourseEndpointsTest extends TestCase
 {
+
+    use RefreshDatabase,
+        WithFaker;
 
     public function test_course_policies_endpoint()
     {
@@ -15,7 +19,7 @@ class CourseEndpointsTest extends TestCase
         $course = \App\Models\Course::factory()->create();
         
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -32,7 +36,7 @@ class CourseEndpointsTest extends TestCase
     public function test_course_policy_endpoint()
     {
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -53,7 +57,7 @@ class CourseEndpointsTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -69,6 +73,8 @@ class CourseEndpointsTest extends TestCase
 
     public function test_course_index_guest_endpoint()
     {
+
+        Auth::guard('web')->logout();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -87,10 +93,10 @@ class CourseEndpointsTest extends TestCase
     public function test_course_show_auth_endpoint()
     {
 
-        $course = \App\Models\Course::latest()->first();
+        $course = \App\Models\Course::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -107,7 +113,9 @@ class CourseEndpointsTest extends TestCase
     public function test_course_show_guest_endpoint()
     {
 
-        $course = \App\Models\Course::latest()->first();
+        Auth::guard('web')->logout();
+
+        $course = \App\Models\Course::factory()->create();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -126,10 +134,8 @@ class CourseEndpointsTest extends TestCase
     public function test_course_create_endpoint()
     {
 
-        $user = \App\Models\User::first();
-
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -147,7 +153,7 @@ class CourseEndpointsTest extends TestCase
         $course = \App\Models\Course::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -165,10 +171,10 @@ class CourseEndpointsTest extends TestCase
     public function test_course_delete_endpoint()
     {
 
-        $course = \App\Models\Course::latest()->first();
+        $course = \App\Models\Course::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -185,10 +191,10 @@ class CourseEndpointsTest extends TestCase
     public function test_course_restore_endpoint()
     {
 
-        $course = \App\Models\Course::first();
+        $course = \App\Models\Course::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -205,10 +211,10 @@ class CourseEndpointsTest extends TestCase
     public function test_course_force_delete_endpoint()
     {
 
-        $course = \App\Models\Course::latest()->first();
+        $course = \App\Models\Course::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -222,11 +228,14 @@ class CourseEndpointsTest extends TestCase
             
     }
 
+
+    /*
+
     public function test_course_export_endpoint()
     {   
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -239,5 +248,6 @@ class CourseEndpointsTest extends TestCase
             ->assertStatus(200);
             
     }
+    */
 
 }

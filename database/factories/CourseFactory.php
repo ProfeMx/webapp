@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Database\Factories;
+// LPG: Eliminar el App para factories de aplicación
+namespace Database\Factories;
 
 /*
  * Docs: https://fakerphp.github.io/ 
@@ -17,7 +18,9 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'Curso 1',
+            'status' => 'public',
+            'payload' => json_encode([]),
         ];
     }
 
