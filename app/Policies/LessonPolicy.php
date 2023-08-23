@@ -25,7 +25,13 @@ class LessonPolicy
 
     public function index(User $user)
     {
-        return false;
+
+        // NOTA: Considerar la política para el listado de secciones
+        // if(!request()->course_id) return false;
+        // if(!request()->sections_id) return false;
+
+
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,22 +41,40 @@ class LessonPolicy
 
     public function view(User $user, Lesson $lesson)
     {
-        return false;
+        return true;
     }
 
     public function create(User $user)
     {
-        return false;
+
+        if(!request()->section_id) return true;
+
+        $course = \App\Models\Section::findOrFail(request()->section_id)->course;
+
+        if(!$course->isEditTeacher($user)) return false;
+
+        return true;
+
     }
 
     public function update(User $user, Lesson $lesson)
     {
-        return false;
+        
+        $course = $lesson->course;
+
+        if(!$course->isEditTeacher($user)) return false;
+
+        return true;
+
     }
 
     public function delete(User $user, Lesson $lesson)
     {
-        return false;
+        $course = $lesson->course;
+
+        if(!$course->isEditTeacher($user)) return false;
+
+        return true;
     }
 
     public function restore(User $user, Lesson $lesson)

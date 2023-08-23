@@ -32,7 +32,6 @@ class Section extends Model
 
     protected $creatable = [
         'name',
-        'order',
         'course_id'
     ];
 

@@ -2,16 +2,19 @@
 
 namespace App\Models\Traits\Relations;
 
+use App\Models\Course;
 use App\Models\LessonMeta;
 use App\Models\Activity;
 use App\Models\Resource;
 use App\Models\EnrollmentLog;
 use App\Models\Section;
-// use \Znck\Eloquent\Traits\BelongsToThrough; // Docs: https://github.com/staudenmeir/belongs-to-through
+use \Znck\Eloquent\Traits\BelongsToThrough; // Docs: https://github.com/staudenmeir/belongs-to-through
 // use \Staudenmeir\EloquentHasManyDeep\HasRelationships; // Docs: https://github.com/staudenmeir/eloquent-has-many-deep
 
 trait LessonRelations
 {
+
+    use BelongsToThrough;
 
     public function metas()
     {
@@ -36,6 +39,11 @@ trait LessonRelations
     public function sections()
     {
         return $this->hasMany(Section::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsToThrough(Course::class, Section::class);
     }
 
 }

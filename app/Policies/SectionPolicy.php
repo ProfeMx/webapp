@@ -25,7 +25,11 @@ class SectionPolicy
 
     public function index(User $user)
     {
-        return false;
+
+        // NOTA: Considerar la política para el listado de secciones
+        // if(!request()->course_id) return false;
+
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,22 +39,45 @@ class SectionPolicy
 
     public function view(User $user, Section $section)
     {
-        return false;
+        return true;
     }
 
     public function create(User $user)
     {
-        return false;
+
+        if(!request()->course_id) return true;
+
+        $course = \App\Models\Course::findOrFail(request()->course_id);
+
+        if(!$course->isEditTeacher($user)) return false;
+
+        return true;
     }
 
     public function update(User $user, Section $section)
     {
-        return false;
+        
+        $course = $section->course;
+
+        if(!$course->isEditTeacher($user)) return false;
+
+        return true;
+
     }
 
     public function delete(User $user, Section $section)
     {
-        return false;
+
+        // PENDIENTE: Considerar que si una sección tiene lecciones no se pueda eliminar.
+        $lessonsCount = $section->lessons()->count();
+
+        if($lessonsCount > 0) return false;
+
+        $course = $section->course;
+
+        if(!$course->isEditTeacher($user)) return false;
+
+        return true;
     }
 
     public function restore(User $user, Section $section)

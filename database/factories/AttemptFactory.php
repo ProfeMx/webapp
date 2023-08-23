@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Factories;
+namespace Database\Factories;
 
 /*
  * Docs: https://fakerphp.github.io/ 

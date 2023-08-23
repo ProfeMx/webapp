@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Factories;
+namespace Database\Factories;
 
 /*
  * Docs: https://fakerphp.github.io/ 
@@ -17,7 +17,9 @@ class LessonFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'Lección 1',
+            'order' => 0,
+            'section_id' => 1,
         ];
     }
 

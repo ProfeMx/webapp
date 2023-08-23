@@ -17,7 +17,7 @@ class DefaultOperation
     public function handle(RestoreEvent $event)
     {
 
-        //
+        // Modificar los parámtros de desempeño de los alumnos
 
     }
 

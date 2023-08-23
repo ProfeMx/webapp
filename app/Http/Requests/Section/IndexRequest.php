@@ -18,7 +18,17 @@ class IndexRequest extends FormRequest
 
     public function authorize()
     {
-        return $this->user()->can('index', Section::class);
+
+        if(auth()->check()) {
+
+            return $this->user()->can('index', Section::class);
+
+        } else {
+
+            return true;
+
+        }
+
     }
 
     public function rules()

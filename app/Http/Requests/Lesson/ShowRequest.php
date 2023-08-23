@@ -18,9 +18,17 @@ class ShowRequest extends FormRequest
     public function authorize()
     {
 
-        $lesson = Lesson::findOrFail($this->lesson_id);
+        if(auth()->check()) {
 
-        return $this->user()->can('view', $lesson);
+            $lesson = Lesson::findOrFail($this->lesson_id);
+
+            return $this->user()->can('view', $lesson);
+
+        } else {
+
+            return true;
+
+        }
 
     }
 

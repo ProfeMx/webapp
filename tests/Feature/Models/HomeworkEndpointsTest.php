@@ -4,7 +4,7 @@ namespace App\Tests\Feature\Models;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Tests\TestCase;
+use Tests\TestCase;
 
 class HomeworkEndpointsTest extends TestCase
 {

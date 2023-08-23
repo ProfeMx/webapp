@@ -20,7 +20,15 @@ class ShowRequest extends FormRequest
 
         $section = Section::findOrFail($this->section_id);
 
-        return $this->user()->can('view', $section);
+        if(auth()->check()) {
+
+            return $this->user()->can('view', $section);
+
+        } else {
+
+            return true;
+
+        }
 
     }
 

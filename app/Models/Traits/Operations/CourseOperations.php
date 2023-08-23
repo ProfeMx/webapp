@@ -2,6 +2,8 @@
 
 namespace App\Models\Traits\Operations;
 
+use App\Models\User;
+
 trait CourseOperations
 {
 
@@ -22,6 +24,13 @@ trait CourseOperations
         $this->payload = $this->buildPayload();
 
         return $this->save();
+
+    }
+
+    public function isEditTeacher(User $user): bool
+    {
+
+        return true;
 
     }
 
