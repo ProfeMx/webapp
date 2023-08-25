@@ -17,7 +17,8 @@ class CareerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'Carrera 1',
+            'description' => 'Descripción de la carrera'
         ];
     }
 

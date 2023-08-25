@@ -17,7 +17,10 @@ class ForumSubscriptionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'status' => 'active',
+            'user_id' => \App\Models\User::factory()->create()->id,
+            'subscriptionable_id' => \App\Models\Forum::factory()->create()->id,
+            'subscriptionable_type' => 'App\Models\Forum',
         ];
     }
 

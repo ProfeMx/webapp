@@ -25,7 +25,7 @@ class PathPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,7 +35,7 @@ class PathPolicy
 
     public function view(User $user, Path $path)
     {
-        return false;
+        return true;
     }
 
     public function create(User $user)

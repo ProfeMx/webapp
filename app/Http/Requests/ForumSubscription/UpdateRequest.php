@@ -28,7 +28,10 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'status' => [
+                'required',
+                Rule::in(ForumSubscription::$allowed_status)
+            ],
             'forum_subscription_id' => 'required|numeric'
         ];
     }

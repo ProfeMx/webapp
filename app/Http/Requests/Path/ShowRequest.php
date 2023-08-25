@@ -18,9 +18,17 @@ class ShowRequest extends FormRequest
     public function authorize()
     {
 
-        $path = Path::findOrFail($this->path_id);
+        if(auth()->check()) {
 
-        return $this->user()->can('view', $path);
+            $path = Path::findOrFail($this->path_id);
+
+            return $this->user()->can('view', $path);
+
+        } else {
+
+            return true;
+
+        }
 
     }
 

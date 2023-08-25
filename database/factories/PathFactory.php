@@ -17,7 +17,8 @@ class PathFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'Ruta 1',
+            'description' => 'Descripción de la ruta'
         ];
     }
 

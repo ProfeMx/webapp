@@ -18,7 +18,17 @@ class IndexRequest extends FormRequest
 
     public function authorize()
     {
-        return $this->user()->can('index', Career::class);
+
+        if(auth()->check()) {
+
+            return $this->user()->can('index', Career::class);
+
+        } else {
+
+            return true; // PENDIENTE
+
+        }
+
     }
 
     public function rules()

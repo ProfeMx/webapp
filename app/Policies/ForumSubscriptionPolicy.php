@@ -25,7 +25,7 @@ class ForumSubscriptionPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,22 +35,22 @@ class ForumSubscriptionPolicy
 
     public function view(User $user, ForumSubscription $forumSubscription)
     {
-        return false;
+        return $user->id === $forumSubscription->user_id;
     }
 
     public function create(User $user)
     {
-        return false;
+        return true;
     }
 
     public function update(User $user, ForumSubscription $forumSubscription)
     {
-        return false;
+        return $user->id === $forumSubscription->user_id;
     }
 
     public function delete(User $user, ForumSubscription $forumSubscription)
     {
-        return false;
+        return $user->id === $forumSubscription->user_id;
     }
 
     public function restore(User $user, ForumSubscription $forumSubscription)

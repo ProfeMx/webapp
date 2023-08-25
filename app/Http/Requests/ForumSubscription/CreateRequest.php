@@ -26,7 +26,16 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'status' => [
+                'required',
+                Rule::in(ForumSubscription::$allowed_status)
+            ],
+            'user_id' => 'required|numeric|exists:users,id',
+            'subscriptionable_id' => 'required|numeric',
+            'subscriptionable_type' => [
+                'required',
+                Rule::in(ForumSubscription::$allowed_subscriptionables)
+            ],
         ];
     }
 

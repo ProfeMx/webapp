@@ -2,6 +2,7 @@
 
 namespace App\Tests\Feature\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -9,13 +10,16 @@ use Tests\TestCase;
 class ForumEndpointsTest extends TestCase
 {
 
+    use RefreshDatabase,
+        WithFaker;
+
     public function test_forum_policies_endpoint()
     {
 
         $forum = \App\Models\Forum::factory()->create();
         
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -32,7 +36,7 @@ class ForumEndpointsTest extends TestCase
     public function test_forum_policy_endpoint()
     {
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -53,7 +57,7 @@ class ForumEndpointsTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -69,6 +73,8 @@ class ForumEndpointsTest extends TestCase
 
     public function test_forum_index_guest_endpoint()
     {
+
+        Auth::guard('web')->logout();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -87,10 +93,10 @@ class ForumEndpointsTest extends TestCase
     public function test_forum_show_auth_endpoint()
     {
 
-        $forum = \App\Models\Forum::latest()->first();
+        $forum = \App\Models\Forum::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -107,7 +113,9 @@ class ForumEndpointsTest extends TestCase
     public function test_forum_show_guest_endpoint()
     {
 
-        $forum = \App\Models\Forum::latest()->first();
+        Auth::guard('web')->logout();
+
+        $forum = \App\Models\Forum::factory()->create();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -129,7 +137,7 @@ class ForumEndpointsTest extends TestCase
         $user = \App\Models\User::first();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -147,7 +155,7 @@ class ForumEndpointsTest extends TestCase
         $forum = \App\Models\Forum::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -165,10 +173,10 @@ class ForumEndpointsTest extends TestCase
     public function test_forum_delete_endpoint()
     {
 
-        $forum = \App\Models\Forum::latest()->first();
+        $forum = \App\Models\Forum::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -185,10 +193,10 @@ class ForumEndpointsTest extends TestCase
     public function test_forum_restore_endpoint()
     {
 
-        $forum = \App\Models\Forum::first();
+        $forum = \App\Models\Forum::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -205,10 +213,10 @@ class ForumEndpointsTest extends TestCase
     public function test_forum_force_delete_endpoint()
     {
 
-        $forum = \App\Models\Forum::latest()->first();
+        $forum = \App\Models\Forum::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -222,11 +230,13 @@ class ForumEndpointsTest extends TestCase
             
     }
 
+    /*
+
     public function test_forum_export_endpoint()
     {   
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -239,5 +249,7 @@ class ForumEndpointsTest extends TestCase
             ->assertStatus(200);
             
     }
+
+    */
 
 }

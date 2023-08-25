@@ -25,7 +25,7 @@ class ThreadPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,22 +35,22 @@ class ThreadPolicy
 
     public function view(User $user, Thread $thread)
     {
-        return false;
+        return true;
     }
 
     public function create(User $user)
     {
-        return false;
+        return true;
     }
 
     public function update(User $user, Thread $thread)
     {
-        return false;
+        return $user->id === $thread->user_id;
     }
 
     public function delete(User $user, Thread $thread)
     {
-        return false;
+        return $user->id === $thread->user_id;
     }
 
     public function restore(User $user, Thread $thread)

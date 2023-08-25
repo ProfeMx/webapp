@@ -57,9 +57,14 @@ class ForumSubscription extends Model
 
     public $loadable_relations = [];
 
-    public $allowed_status = [
+    public static $allowed_status = [
         'active',
         'paused',
+    ];
+
+    public static $allowed_subscriptionables = [
+        'App\\Models\\Thread',
+        'App\\Models\\Forum'
     ];
 
 }

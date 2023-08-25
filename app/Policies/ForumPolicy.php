@@ -25,7 +25,7 @@ class ForumPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,22 +35,48 @@ class ForumPolicy
 
     public function view(User $user, Forum $forum)
     {
-        return false;
+
+        // PENDIENTE: Contemplar las posibilidades de un foro publico, privado, borrador
+        
+        return true;
+
     }
 
     public function create(User $user)
     {
-        return false;
+
+        if(!request()->course_id) return true;
+
+        $course = Course::findOrFail(request()->course_id);
+
+        // Estas operación la puede realizar un profesor con permiso de edición
+        $a = $course->isEditTeacher($user);
+
+        return $a;
     }
 
     public function update(User $user, Forum $forum)
     {
-        return false;
+
+        $course = $forum->course;
+
+        // Estas operación la puede realizar un profesor con permiso de edición
+        $a = $course->isEditTeacher($user);
+
+        return $a;
+
     }
 
     public function delete(User $user, Forum $forum)
     {
-        return false;
+        
+        $course = $forum->course;
+
+        // Estas operación la puede realizar un profesor con permiso de edición
+        $a = $course->isEditTeacher($user);
+
+        return $a;
+        
     }
 
     public function restore(User $user, Forum $forum)

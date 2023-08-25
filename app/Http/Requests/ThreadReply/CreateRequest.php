@@ -27,7 +27,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'content' => 'required|string|max:3000',
-            'thread_id' => 'required|numeric|exists:thread_replies,id',
+            'thread_id' => 'required|numeric|exists:threads,id',
             'user_id' => 'required|numeric|exists:users,id',
         ];
     }

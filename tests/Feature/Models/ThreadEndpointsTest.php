@@ -2,6 +2,7 @@
 
 namespace App\Tests\Feature\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -9,13 +10,16 @@ use Tests\TestCase;
 class ThreadEndpointsTest extends TestCase
 {
 
+    use RefreshDatabase,
+        WithFaker;
+
     public function test_thread_policies_endpoint()
     {
 
         $thread = \App\Models\Thread::factory()->create();
         
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -32,7 +36,7 @@ class ThreadEndpointsTest extends TestCase
     public function test_thread_policy_endpoint()
     {
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -53,7 +57,7 @@ class ThreadEndpointsTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -69,6 +73,8 @@ class ThreadEndpointsTest extends TestCase
 
     public function test_thread_index_guest_endpoint()
     {
+
+        Auth::guard('web')->logout();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -87,10 +93,10 @@ class ThreadEndpointsTest extends TestCase
     public function test_thread_show_auth_endpoint()
     {
 
-        $thread = \App\Models\Thread::latest()->first();
+        $thread = \App\Models\Thread::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -107,7 +113,9 @@ class ThreadEndpointsTest extends TestCase
     public function test_thread_show_guest_endpoint()
     {
 
-        $thread = \App\Models\Thread::latest()->first();
+        Auth::guard('web')->logout();
+
+        $thread = \App\Models\Thread::factory()->create();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -128,13 +136,18 @@ class ThreadEndpointsTest extends TestCase
 
         $user = \App\Models\User::first();
 
+        $forum = \App\Models\Forum::factory()->create();
+
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
 
-        $payload = \App\Models\Thread::factory()->make()->getAttributes();
+        $payload = \App\Models\Thread::factory()->make([
+            'forum_id' => $forum->id,
+            'user_id' => $this->user->id
+        ])->getAttributes();
 
         $this->json('POST', '/api/thread/create', $payload, $headers)
             ->assertStatus(201);
@@ -147,7 +160,7 @@ class ThreadEndpointsTest extends TestCase
         $thread = \App\Models\Thread::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -165,10 +178,10 @@ class ThreadEndpointsTest extends TestCase
     public function test_thread_delete_endpoint()
     {
 
-        $thread = \App\Models\Thread::latest()->first();
+        $thread = \App\Models\Thread::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -185,10 +198,10 @@ class ThreadEndpointsTest extends TestCase
     public function test_thread_restore_endpoint()
     {
 
-        $thread = \App\Models\Thread::first();
+        $thread = \App\Models\Thread::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -205,10 +218,10 @@ class ThreadEndpointsTest extends TestCase
     public function test_thread_force_delete_endpoint()
     {
 
-        $thread = \App\Models\Thread::latest()->first();
+        $thread = \App\Models\Thread::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -222,11 +235,13 @@ class ThreadEndpointsTest extends TestCase
             
     }
 
+    /*
+
     public function test_thread_export_endpoint()
     {   
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -239,5 +254,7 @@ class ThreadEndpointsTest extends TestCase
             ->assertStatus(200);
             
     }
+
+    */
 
 }

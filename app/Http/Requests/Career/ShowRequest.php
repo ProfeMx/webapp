@@ -18,9 +18,17 @@ class ShowRequest extends FormRequest
     public function authorize()
     {
 
-        $career = Career::findOrFail($this->career_id);
+        if(auth()->check()) {
 
-        return $this->user()->can('view', $career);
+            $career = Career::findOrFail($this->career_id);
+
+            return $this->user()->can('view', $career);
+
+        } else {
+
+            return true;
+
+        }
 
     }
 

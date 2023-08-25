@@ -17,7 +17,8 @@ class ForumFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'Foro 1',
+            'course_id' => 1
         ];
     }
 

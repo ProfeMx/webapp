@@ -28,7 +28,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:5000',
             'path_id' => 'required|numeric'
         ];
     }

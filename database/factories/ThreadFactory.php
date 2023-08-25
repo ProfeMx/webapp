@@ -17,7 +17,10 @@ class ThreadFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => 'Thread uno',
+            'content' => 'Contenido del hilo',
+            'forum_id' => 1,
+            'user_id' => 1,
         ];
     }
 

@@ -17,7 +17,9 @@ class ThreadReplyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'content' => 'Contenido de la respuesta',
+            'thread_id' => \App\Models\Thread::factory()->create()->id,
+            'user_id' => \App\Models\User::factory()->create()->id,
         ];
     }
 
