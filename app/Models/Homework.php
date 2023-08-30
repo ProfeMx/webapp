@@ -45,7 +45,9 @@ class Homework extends Model
         'type',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'payload' => 'json'
+    ];
 
     protected $protected_metas = [];
 
@@ -53,7 +55,7 @@ class Homework extends Model
 
     public $loadable_relations = [];
 
-    public $allowed_types = [
+    public static $allowed_types = [
         'text',
         'file',
         'text_file',

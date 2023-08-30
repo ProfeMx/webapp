@@ -17,7 +17,8 @@ class HomeworkFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => 'Tarea 1',
+            'type' => 'text',
         ];
     }
 

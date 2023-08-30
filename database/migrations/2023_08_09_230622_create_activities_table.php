@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('status');
-            $table->decimal('weight', 3, 2);
+            $table->decimal('weight', 5, 2);
             $table->unsignedTinyInteger('order');
             $table->foreignId('lesson_id');
-            $table->foreignId('activityable_id');
-            $table->string('activityable_type');
+            $table->foreignId('activityable_id')->nullable();
+            $table->string('activityable_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

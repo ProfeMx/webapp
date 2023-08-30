@@ -7,6 +7,7 @@ namespace Database\Factories;
  */
 
 use App\Models\Activity;
+use App\Models\Lesson;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ActivityFactory extends Factory
@@ -17,7 +18,14 @@ class ActivityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'Actividad 1',
+            'type' => 'quiz',
+            'status' => 'public',
+            'weight' => 50,
+            'order' => 1,
+            'lesson_id' => Lesson::factory(),
+            'activityable_id' => 1,
+            'activityable_type' => 'App\\Models\\Quiz',
         ];
     }
 

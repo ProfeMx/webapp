@@ -25,7 +25,7 @@ class HomeworkPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,7 +35,7 @@ class HomeworkPolicy
 
     public function view(User $user, Homework $homework)
     {
-        return false;
+        return true; // PENDIENTE: Hacer que solo un usuario matriculado la pueda ver
     }
 
     public function create(User $user)

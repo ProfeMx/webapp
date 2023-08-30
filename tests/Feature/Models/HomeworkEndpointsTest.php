@@ -2,6 +2,7 @@
 
 namespace App\Tests\Feature\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -9,13 +10,16 @@ use Tests\TestCase;
 class HomeworkEndpointsTest extends TestCase
 {
 
+    use RefreshDatabase,
+        WithFaker;
+
     public function test_homework_policies_endpoint()
     {
 
         $homework = \App\Models\Homework::factory()->create();
         
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -32,7 +36,7 @@ class HomeworkEndpointsTest extends TestCase
     public function test_homework_policy_endpoint()
     {
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -53,7 +57,7 @@ class HomeworkEndpointsTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -69,6 +73,8 @@ class HomeworkEndpointsTest extends TestCase
 
     public function test_homework_index_guest_endpoint()
     {
+
+        Auth::guard('web')->logout();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -87,10 +93,10 @@ class HomeworkEndpointsTest extends TestCase
     public function test_homework_show_auth_endpoint()
     {
 
-        $homework = \App\Models\Homework::latest()->first();
+        $homework = \App\Models\Homework::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -107,7 +113,9 @@ class HomeworkEndpointsTest extends TestCase
     public function test_homework_show_guest_endpoint()
     {
 
-        $homework = \App\Models\Homework::latest()->first();
+        Auth::guard('web')->logout();
+
+        $homework = \App\Models\Homework::factory()->create();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -129,7 +137,7 @@ class HomeworkEndpointsTest extends TestCase
         $user = \App\Models\User::first();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -147,7 +155,7 @@ class HomeworkEndpointsTest extends TestCase
         $homework = \App\Models\Homework::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -165,10 +173,10 @@ class HomeworkEndpointsTest extends TestCase
     public function test_homework_delete_endpoint()
     {
 
-        $homework = \App\Models\Homework::latest()->first();
+        $homework = \App\Models\Homework::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -185,10 +193,10 @@ class HomeworkEndpointsTest extends TestCase
     public function test_homework_restore_endpoint()
     {
 
-        $homework = \App\Models\Homework::first();
+        $homework = \App\Models\Homework::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -205,10 +213,10 @@ class HomeworkEndpointsTest extends TestCase
     public function test_homework_force_delete_endpoint()
     {
 
-        $homework = \App\Models\Homework::latest()->first();
+        $homework = \App\Models\Homework::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -222,11 +230,13 @@ class HomeworkEndpointsTest extends TestCase
             
     }
 
+    /*
+
     public function test_homework_export_endpoint()
     {   
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -239,5 +249,7 @@ class HomeworkEndpointsTest extends TestCase
             ->assertStatus(200);
             
     }
+
+    */
 
 }

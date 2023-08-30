@@ -25,7 +25,7 @@ class ActivityPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,7 +35,7 @@ class ActivityPolicy
 
     public function view(User $user, Activity $activity)
     {
-        return false;
+        return true; // Pendiente: Después hacer que solo el alumno lo pueda ver 
     }
 
     public function create(User $user)

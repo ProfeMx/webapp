@@ -72,17 +72,17 @@ class Activity extends Model
         'activityable',
     ];
 
-    public $allowed_types = [
+    public static $allowed_types = [
         'quiz',
         'homework',
     ];
 
-    public $allowed_status = [
+    public static $allowed_status = [
         'public',
         'draft',
     ];
 
-    public $allowed_activityables = [
+    public static $allowed_activityables = [
         'App\\Models\\Homework',
         'App\\Models\\Quiz',
     ];

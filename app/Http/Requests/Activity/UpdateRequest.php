@@ -31,9 +31,9 @@ class UpdateRequest extends FormRequest
             'name' => 'nullable|string|max:255',
             'status' => [
                 'nullable',
-                Rule::in((new Activity)->allowed_status)
+                Rule::in(Activity::$allowed_status)
             ],
-            'weight' => 'nullable|numeric', 
+            'weight' => 'nullable|numeric|max:100|min:0', 
             'activity_id' => 'required|numeric'
         ];
     }

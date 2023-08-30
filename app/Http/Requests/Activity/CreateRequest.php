@@ -29,18 +29,18 @@ class CreateRequest extends FormRequest
             'name' => 'required|string|max:255',
             'type' => [
                 'required',
-                Rule::in((new Activity)->allowed_types)
+                Rule::in(Activity::$allowed_types)
             ],
             'status' => [
                 'required',
-                Rule::in((new Activity)->allowed_status)
+                Rule::in(Activity::$allowed_status)
             ],
-            'weight' => 'required|numeric', 
+            'weight' => 'required|numeric|max:100|min:0', 
             'lesson_id' => 'required|numeric|exists:lessons,id',
-            'activityable_id' => 'required|numeric',
+            'activityable_id' => 'nullable|numeric',
             'activityable_type' => [
-                'required',
-                Rule::in((new Activity)->allowed_activityables)
+                'nullable',
+                Rule::in(Activity::$allowed_activityables)
             ],
         ];
     }
@@ -60,9 +60,7 @@ class CreateRequest extends FormRequest
             'lesson_id.required' => 'El ID de la lección es obligatorio.',
             'lesson_id.numeric' => 'El ID de la lección debe ser un valor numérico.',
             'lesson_id.exists' => 'El ID de la lección no existe en la tabla de lecciones.',
-            'activityable_id.required' => 'El ID de la actividad es obligatorio.',
             'activityable_id.numeric' => 'El ID de la actividad debe ser un valor numérico.',
-            'activityable_type.required' => 'El tipo de actividad es obligatorio.',
             'activityable_type.in' => 'El tipo de actividad seleccionado no es válido.',
         ];
     }

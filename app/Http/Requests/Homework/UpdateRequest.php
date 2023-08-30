@@ -28,7 +28,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'nullable|string|max:255',
+            'type' => [
+                'nullable',
+                Rule::in(Homework::$allowed_types)
+            ],
             'homework_id' => 'required|numeric'
         ];
     }
