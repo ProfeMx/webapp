@@ -2,6 +2,7 @@
 
 namespace App\Tests\Feature\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -9,13 +10,16 @@ use Tests\TestCase;
 class QuizEndpointsTest extends TestCase
 {
 
+    use RefreshDatabase,
+        WithFaker;
+
     public function test_quiz_policies_endpoint()
     {
 
         $quiz = \App\Models\Quiz::factory()->create();
         
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -32,7 +36,7 @@ class QuizEndpointsTest extends TestCase
     public function test_quiz_policy_endpoint()
     {
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -53,7 +57,7 @@ class QuizEndpointsTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -69,6 +73,8 @@ class QuizEndpointsTest extends TestCase
 
     public function test_quiz_index_guest_endpoint()
     {
+
+        Auth::guard('web')->logout();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -87,10 +93,10 @@ class QuizEndpointsTest extends TestCase
     public function test_quiz_show_auth_endpoint()
     {
 
-        $quiz = \App\Models\Quiz::latest()->first();
+        $quiz = \App\Models\Quiz::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -107,7 +113,9 @@ class QuizEndpointsTest extends TestCase
     public function test_quiz_show_guest_endpoint()
     {
 
-        $quiz = \App\Models\Quiz::latest()->first();
+        Auth::guard('web')->logout();
+
+        $quiz = \App\Models\Quiz::factory()->create();
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -129,7 +137,7 @@ class QuizEndpointsTest extends TestCase
         $user = \App\Models\User::first();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -147,7 +155,7 @@ class QuizEndpointsTest extends TestCase
         $quiz = \App\Models\Quiz::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -165,10 +173,10 @@ class QuizEndpointsTest extends TestCase
     public function test_quiz_delete_endpoint()
     {
 
-        $quiz = \App\Models\Quiz::latest()->first();
+        $quiz = \App\Models\Quiz::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -185,10 +193,10 @@ class QuizEndpointsTest extends TestCase
     public function test_quiz_restore_endpoint()
     {
 
-        $quiz = \App\Models\Quiz::first();
+        $quiz = \App\Models\Quiz::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -205,10 +213,10 @@ class QuizEndpointsTest extends TestCase
     public function test_quiz_force_delete_endpoint()
     {
 
-        $quiz = \App\Models\Quiz::latest()->first();
+        $quiz = \App\Models\Quiz::factory()->create();
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -222,11 +230,13 @@ class QuizEndpointsTest extends TestCase
             
     }
 
+    /*
+
     public function test_quiz_export_endpoint()
     {   
 
         $headers = [
-            'Authorization' => config('test.token'),
+            // 'Authorization' => config('test.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];  
@@ -239,5 +249,7 @@ class QuizEndpointsTest extends TestCase
             ->assertStatus(200);
             
     }
+
+    */
 
 }

@@ -13,6 +13,7 @@ class CreateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
+
         $version = '1.0.0';
 
         $this->merge([

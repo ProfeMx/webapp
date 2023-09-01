@@ -13,7 +13,11 @@ class CreateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //
+        $version = '1.0.0';
+
+        $this->merge([
+            'version' => $version,
+        ]);
     }
 
     public function authorize()
@@ -25,10 +29,13 @@ class CreateRequest extends FormRequest
     {
         return [
             'version' => 'required',
-            'type' => 'required',
-            'order' => 'required',
-            'weight' => 'required',
-            'quiz_id' => 'required',
+            'type' => [
+                'required',
+                Rule::in(Question::$allowed_types)
+            ],
+            // 'order' => 'required',
+            'weight' => 'required|numeric',
+            'quiz_id' => 'required|numeric|exists:quizzes,id',
         ];
     }
 

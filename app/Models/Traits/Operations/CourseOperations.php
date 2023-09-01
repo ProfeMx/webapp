@@ -29,9 +29,17 @@ trait CourseOperations
 
     public function isEditTeacher(User $user): bool
     {
-
         return true;
+    }
 
+    public function isTeacher(User $user): bool
+    {
+        return true;
+    }
+
+    public function canGrade(User $user):  bool
+    {
+        return true;
     }
 
 }

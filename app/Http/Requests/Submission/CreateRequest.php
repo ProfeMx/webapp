@@ -26,8 +26,12 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
+            'status' => [
+                'required',
+                Rule::in(Submission::$allowed_status)
+            ],
             'content' => 'nullable|string|max:10000',
-            'submission_file' => 'nullable|file|max:2048',
+            'submission_file' => 'nullable|file|max:20480', // 'storage/files/sknvkjsndf.pdf'
             'homework_id' => 'required|integer|exists:homeworks,id',
             'enrollment_id' => 'required|integer|exists:homeworks,id',
         ];

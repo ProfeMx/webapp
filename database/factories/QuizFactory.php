@@ -17,7 +17,9 @@ class QuizFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => 'Examen',
+            'version' => '1.0.0',
+            'payload' => (new Quiz)->buildPayload()
         ];
     }
 

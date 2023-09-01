@@ -25,7 +25,7 @@ class QuizPolicy
 
     public function index(User $user)
     {
-        return false;
+        return true;
     }
 
     public function viewAny(User $user)
@@ -35,7 +35,7 @@ class QuizPolicy
 
     public function view(User $user, Quiz $quiz)
     {
-        return false;
+        return true; // Pendiente
     }
 
     public function create(User $user)

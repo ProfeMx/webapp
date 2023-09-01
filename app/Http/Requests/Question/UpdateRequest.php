@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'weight' => 'required|numeric',
             'question_id' => 'required|numeric'
         ];
     }

@@ -10,7 +10,11 @@ trait QuestionStorage
     public function createModel($request)
     {
 
-        $question = $this->create($request->only($this->creatable));
+        $order = self::where('quiz_id', $request->quiz_id)->count();
+
+        $question = $this->create($request->only($this->creatable) + [
+            'order' => ++$order
+        ]);
 
         $question->updateModelMetas($request);
 

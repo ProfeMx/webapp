@@ -33,8 +33,8 @@ class UpdateRequest extends FormRequest
         return [
             'content' => 'nullable|string|max:10000',
             'submission_file' => 'nullable|file|max:2048',
-            'grade_override' => 'nullable|numeric',
-            'feedback_file' => 'nullable|string|1500',
+            'grade_override' => 'nullable|numeric', // PENDIENTE: Esto solo lo puede actualizar un docente.
+            'feedback_file' => 'nullable|string|1500', // PENDIENTE: Esto solo lo puede actualizar un docente.
             'submission_id' => 'required|numeric'
         ];
     }

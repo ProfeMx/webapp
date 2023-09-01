@@ -36,10 +36,12 @@ class Question extends Model
     protected $creatable = [
         'version',
         'type',
+        'weight',
+        'quiz_id',
     ];
 
     protected $updatable = [
-        'version',
+        'weight',
     ];
 
     public static $exportCols = [
@@ -53,11 +55,14 @@ class Question extends Model
 
     protected $protected_metas = [];
 
-    protected $editable_metas = [];
+    protected $editable_metas = [
+        'sentence',
+        'data'
+    ];
 
     public $loadable_relations = [];
 
-    public $allowed_type = [
+    public static $allowed_types = [
         'true_false',
         'single_option',
         'multi_option',
