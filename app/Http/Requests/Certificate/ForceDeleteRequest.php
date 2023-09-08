@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new CertificateResource($certificate);
 
-        event(new ForceDeleteEvent($certificate, $this, $response));
+        event(new ForceDeleteEvent($certificate, $this->all(), $response));
 
         return $response;
 

@@ -56,7 +56,7 @@ class CreateRequest extends FormRequest
 
         $response = new FileResource($file);
 
-        event(new CreateEvent($file, $this, $response));
+        event(new CreateEvent($file, $this->all(), $response));
 
         return $response;
 

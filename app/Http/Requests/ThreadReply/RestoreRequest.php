@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new ThreadReplyResource($threadReply);
 
-        event(new RestoreEvent($threadReply, $this, $response));
+        event(new RestoreEvent($threadReply, $this->all(), $response));
 
         return $response;
 

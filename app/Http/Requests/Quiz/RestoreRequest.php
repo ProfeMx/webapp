@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new QuizResource($quiz);
 
-        event(new RestoreEvent($quiz, $this, $response));
+        event(new RestoreEvent($quiz, $this->all(), $response));
 
         return $response;
 

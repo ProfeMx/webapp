@@ -61,7 +61,7 @@ class DeallocateCareerRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new DeallocateCareerEvent($path, $this, $response));
+        event(new DeallocateCareerEvent($path, $this->all(), $response));
 
         return $response;
 

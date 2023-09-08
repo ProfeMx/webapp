@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new SectionResource($section);
 
-        event(new ForceDeleteEvent($section, $this, $response));
+        event(new ForceDeleteEvent($section, $this->all(), $response));
 
         return $response;
 

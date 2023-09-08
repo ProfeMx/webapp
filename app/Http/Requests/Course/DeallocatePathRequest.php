@@ -61,7 +61,7 @@ class DeallocatePathRequest extends FormRequest
 
         $response = new CourseResource($course);
 
-        event(new DeallocatePathEvent($course, $this, $response));
+        event(new DeallocatePathEvent($course, $this->all(), $response));
 
         return $response;
 

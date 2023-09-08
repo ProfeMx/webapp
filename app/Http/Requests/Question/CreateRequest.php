@@ -65,7 +65,7 @@ class CreateRequest extends FormRequest
 
         $response = new QuestionResource($question);
 
-        event(new CreateEvent($question, $this, $response));
+        event(new CreateEvent($question, $this->all(), $response));
 
         return $response;
 

@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new EnrollmentLogResource($enrollmentLog);
 
-        event(new DeleteEvent($enrollmentLog, $this, $response));
+        event(new DeleteEvent($enrollmentLog, $this->all(), $response));
 
         return $response;
 

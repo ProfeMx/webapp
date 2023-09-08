@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new VideoResource($video);
 
-        event(new RestoreEvent($video, $this, $response));
+        event(new RestoreEvent($video, $this->all(), $response));
 
         return $response;
 

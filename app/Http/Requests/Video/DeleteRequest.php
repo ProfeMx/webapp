@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new VideoResource($video);
 
-        event(new DeleteEvent($video, $this, $response));
+        event(new DeleteEvent($video, $this->all(), $response));
 
         return $response;
 

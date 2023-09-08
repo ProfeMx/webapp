@@ -59,7 +59,7 @@ class CreateRequest extends FormRequest
 
         $response = new ThreadResource($thread);
 
-        event(new CreateEvent($thread, $this, $response));
+        event(new CreateEvent($thread, $this->all(), $response));
 
         return $response;
 

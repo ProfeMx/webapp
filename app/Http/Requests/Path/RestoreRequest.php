@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new RestoreEvent($path, $this, $response));
+        event(new RestoreEvent($path, $this->all(), $response));
 
         return $response;
 

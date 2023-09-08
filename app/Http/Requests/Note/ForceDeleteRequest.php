@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new NoteResource($note);
 
-        event(new ForceDeleteEvent($note, $this, $response));
+        event(new ForceDeleteEvent($note, $this->all(), $response));
 
         return $response;
 

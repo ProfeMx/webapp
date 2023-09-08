@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new ForceDeleteEvent($path, $this, $response));
+        event(new ForceDeleteEvent($path, $this->all(), $response));
 
         return $response;
 

@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new CertificateResource($certificate);
 
-        event(new DeleteEvent($certificate, $this, $response));
+        event(new DeleteEvent($certificate, $this->all(), $response));
 
         return $response;
 

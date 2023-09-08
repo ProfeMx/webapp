@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new NoteResource($note);
 
-        event(new DeleteEvent($note, $this, $response));
+        event(new DeleteEvent($note, $this->all(), $response));
 
         return $response;
 

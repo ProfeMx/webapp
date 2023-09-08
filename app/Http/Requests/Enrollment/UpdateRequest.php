@@ -61,7 +61,7 @@ class UpdateRequest extends FormRequest
 
         $response = new EnrollmentResource($enrollment);
 
-        event(new UpdateEvent($enrollment, $this, $response));
+        event(new UpdateEvent($enrollment, $this->all(), $response));
 
         return $response;
 

@@ -62,7 +62,7 @@ class UpdateRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new UpdateEvent($path, $this, $response));
+        event(new UpdateEvent($path, $this->all(), $response));
 
         return $response;
 

@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new VideoResource($video);
 
-        event(new ForceDeleteEvent($video, $this, $response));
+        event(new ForceDeleteEvent($video, $this->all(), $response));
 
         return $response;
 

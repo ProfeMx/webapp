@@ -56,7 +56,7 @@ class CreateRequest extends FormRequest
 
         $response = new NoteResource($note);
 
-        event(new CreateEvent($note, $this, $response));
+        event(new CreateEvent($note, $this->all(), $response));
 
         return $response;
 

@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new FileResource($file);
 
-        event(new RestoreEvent($file, $this, $response));
+        event(new RestoreEvent($file, $this->all(), $response));
 
         return $response;
 

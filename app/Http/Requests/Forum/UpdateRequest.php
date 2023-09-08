@@ -61,7 +61,7 @@ class UpdateRequest extends FormRequest
 
         $response = new ForumResource($forum);
 
-        event(new UpdateEvent($forum, $this, $response));
+        event(new UpdateEvent($forum, $this->all(), $response));
 
         return $response;
 

@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new NoteResource($note);
 
-        event(new RestoreEvent($note, $this, $response));
+        event(new RestoreEvent($note, $this->all(), $response));
 
         return $response;
 

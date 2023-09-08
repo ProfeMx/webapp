@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new CourseResource($course);
 
-        event(new RestoreEvent($course, $this, $response));
+        event(new RestoreEvent($course, $this->all(), $response));
 
         return $response;
 

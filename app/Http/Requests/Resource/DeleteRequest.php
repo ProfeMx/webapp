@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new ResourceResource($resource);
 
-        event(new DeleteEvent($resource, $this, $response));
+        event(new DeleteEvent($resource, $this->all(), $response));
 
         return $response;
 

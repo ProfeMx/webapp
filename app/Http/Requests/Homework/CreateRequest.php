@@ -60,7 +60,7 @@ class CreateRequest extends FormRequest
 
         $response = new HomeworkResource($homework);
 
-        event(new CreateEvent($homework, $this, $response));
+        event(new CreateEvent($homework, $this->all(), $response));
 
         return $response;
 

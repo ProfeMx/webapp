@@ -59,7 +59,7 @@ class CreateRequest extends FormRequest
 
         $response = new EnrollmentLogResource($enrollmentLog);
 
-        event(new CreateEvent($enrollmentLog, $this, $response));
+        event(new CreateEvent($enrollmentLog, $this->all(), $response));
 
         return $response;
 

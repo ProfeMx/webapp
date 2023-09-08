@@ -61,7 +61,7 @@ class UpdateRequest extends FormRequest
 
         $response = new FileResource($file);
 
-        event(new UpdateEvent($file, $this, $response));
+        event(new UpdateEvent($file, $this->all(), $response));
 
         return $response;
 

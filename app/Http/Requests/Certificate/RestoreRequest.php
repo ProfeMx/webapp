@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new CertificateResource($certificate);
 
-        event(new RestoreEvent($certificate, $this, $response));
+        event(new RestoreEvent($certificate, $this->all(), $response));
 
         return $response;
 

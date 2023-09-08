@@ -56,7 +56,7 @@ class CreateRequest extends FormRequest
 
         $response = new ForumResource($forum);
 
-        event(new CreateEvent($forum, $this, $response));
+        event(new CreateEvent($forum, $this->all(), $response));
 
         return $response;
 

@@ -61,7 +61,7 @@ class UpdateRequest extends FormRequest
 
         $response = new NoteResource($note);
 
-        event(new UpdateEvent($note, $this, $response));
+        event(new UpdateEvent($note, $this->all(), $response));
 
         return $response;
 

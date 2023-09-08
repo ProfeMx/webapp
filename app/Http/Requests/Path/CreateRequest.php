@@ -57,7 +57,7 @@ class CreateRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new CreateEvent($path, $this, $response));
+        event(new CreateEvent($path, $this->all(), $response));
 
         return $response;
 

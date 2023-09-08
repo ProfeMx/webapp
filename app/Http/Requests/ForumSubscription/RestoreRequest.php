@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new ForumSubscriptionResource($forumSubscription);
 
-        event(new RestoreEvent($forumSubscription, $this, $response));
+        event(new RestoreEvent($forumSubscription, $this->all(), $response));
 
         return $response;
 

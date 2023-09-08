@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new QuizResource($quiz);
 
-        event(new ForceDeleteEvent($quiz, $this, $response));
+        event(new ForceDeleteEvent($quiz, $this->all(), $response));
 
         return $response;
 

@@ -61,7 +61,7 @@ class CreateRequest extends FormRequest
 
         $response = new VideoResource($video);
 
-        event(new CreateEvent($video, $this, $response));
+        event(new CreateEvent($video, $this->all(), $response));
 
         return $response;
 

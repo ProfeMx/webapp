@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new CareerResource($career);
 
-        event(new ForceDeleteEvent($career, $this, $response));
+        event(new ForceDeleteEvent($career, $this->all(), $response));
 
         return $response;
 

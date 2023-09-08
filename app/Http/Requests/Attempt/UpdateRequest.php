@@ -63,7 +63,7 @@ class UpdateRequest extends FormRequest
 
         $response = new AttemptResource($attempt);
 
-        event(new UpdateEvent($attempt, $this, $response));
+        event(new UpdateEvent($attempt, $this->all(), $response));
 
         return $response;
 

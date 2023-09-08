@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new ThreadReplyResource($threadReply);
 
-        event(new DeleteEvent($threadReply, $this, $response));
+        event(new DeleteEvent($threadReply, $this->all(), $response));
 
         return $response;
 

@@ -61,7 +61,7 @@ class AssignCourseRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new AssignCourseEvent($path, $this, $response));
+        event(new AssignCourseEvent($path, $this->all(), $response));
 
         return $response;
 

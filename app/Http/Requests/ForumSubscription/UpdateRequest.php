@@ -64,7 +64,7 @@ class UpdateRequest extends FormRequest
 
         $response = new ForumSubscriptionResource($forumSubscription);
 
-        event(new UpdateEvent($forumSubscription, $this, $response));
+        event(new UpdateEvent($forumSubscription, $this->all(), $response));
 
         return $response;
 

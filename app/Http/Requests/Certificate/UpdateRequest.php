@@ -65,7 +65,7 @@ class UpdateRequest extends FormRequest
 
         $response = new CertificateResource($certificate);
 
-        event(new UpdateEvent($certificate, $this, $response));
+        event(new UpdateEvent($certificate, $this->all(), $response));
 
         return $response;
 

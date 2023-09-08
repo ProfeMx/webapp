@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new CareerResource($career);
 
-        event(new RestoreEvent($career, $this, $response));
+        event(new RestoreEvent($career, $this->all(), $response));
 
         return $response;
 

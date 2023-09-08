@@ -59,7 +59,7 @@ class DeleteRequest extends FormRequest
 
         $response = new ForumResource($forum);
 
-        event(new DeleteEvent($forum, $this, $response));
+        event(new DeleteEvent($forum, $this->all(), $response));
 
         return $response;
 

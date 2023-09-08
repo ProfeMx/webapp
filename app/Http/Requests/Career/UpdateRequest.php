@@ -62,7 +62,7 @@ class UpdateRequest extends FormRequest
 
         $response = new CareerResource($career);
 
-        event(new UpdateEvent($career, $this, $response));
+        event(new UpdateEvent($career, $this->all(), $response));
 
         return $response;
 

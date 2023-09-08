@@ -66,7 +66,7 @@ class UpdateRequest extends FormRequest
 
         $response = new ActivityResource($activity);
 
-        event(new UpdateEvent($activity, $this, $response));
+        event(new UpdateEvent($activity, $this->all(), $response));
 
         return $response;
 

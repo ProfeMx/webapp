@@ -65,7 +65,7 @@ class UpdateRequest extends FormRequest
 
         $response = new HomeworkResource($homework);
 
-        event(new UpdateEvent($homework, $this, $response));
+        event(new UpdateEvent($homework, $this->all(), $response));
 
         return $response;
 

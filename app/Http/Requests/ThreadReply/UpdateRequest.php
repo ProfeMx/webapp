@@ -61,7 +61,7 @@ class UpdateRequest extends FormRequest
 
         $response = new ThreadReplyResource($threadReply);
 
-        event(new UpdateEvent($threadReply, $this, $response));
+        event(new UpdateEvent($threadReply, $this->all(), $response));
 
         return $response;
 

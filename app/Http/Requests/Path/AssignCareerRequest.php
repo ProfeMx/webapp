@@ -61,7 +61,7 @@ class AssignCareerRequest extends FormRequest
 
         $response = new PathResource($path);
 
-        event(new AssignCareerEvent($path, $this, $response));
+        event(new AssignCareerEvent($path, $this->all(), $response));
 
         return $response;
 

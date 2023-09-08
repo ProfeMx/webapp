@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new EnrollmentLogResource($enrollmentLog);
 
-        event(new RestoreEvent($enrollmentLog, $this, $response));
+        event(new RestoreEvent($enrollmentLog, $this->all(), $response));
 
         return $response;
 

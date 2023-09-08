@@ -57,7 +57,7 @@ class CreateRequest extends FormRequest
 
         $response = new CareerResource($career);
 
-        event(new CreateEvent($career, $this, $response));
+        event(new CreateEvent($career, $this->all(), $response));
 
         return $response;
 

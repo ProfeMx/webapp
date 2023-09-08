@@ -71,7 +71,7 @@ class UpdateRequest extends FormRequest
 
         $response = new CourseResource($course);
 
-        event(new UpdateEvent($course, $this, $response));
+        event(new UpdateEvent($course, $this->all(), $response));
 
         return $response;
 

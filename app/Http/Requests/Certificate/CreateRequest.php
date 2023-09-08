@@ -70,7 +70,7 @@ class CreateRequest extends FormRequest
 
         $response = new CertificateResource($certificate);
 
-        event(new CreateEvent($certificate, $this, $response));
+        event(new CreateEvent($certificate, $this->all(), $response));
 
         return $response;
 

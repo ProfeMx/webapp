@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new SubmissionResource($submission);
 
-        event(new ForceDeleteEvent($submission, $this, $response));
+        event(new ForceDeleteEvent($submission, $this->all(), $response));
 
         return $response;
 

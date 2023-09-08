@@ -59,7 +59,7 @@ class ForceDeleteRequest extends FormRequest
 
         $response = new ForumSubscriptionResource($forumSubscription);
 
-        event(new ForceDeleteEvent($forumSubscription, $this, $response));
+        event(new ForceDeleteEvent($forumSubscription, $this->all(), $response));
 
         return $response;
 
