@@ -60,7 +60,7 @@ class RestoreRequest extends FormRequest
 
         $response = new ActivityResource($activity);
 
-        event(new RestoreEvent($activity, $this, $response));
+        event(new RestoreEvent($activity, $this->all(), $response));
 
         return $response;
 

@@ -90,7 +90,7 @@ class CreateRequest extends FormRequest
 
         $response = new ActivityResource($activity);
 
-        event(new CreateEvent($activity, $this, $response));
+        event(new CreateEvent($activity, $this->all(), $response));
 
         return $response;
 

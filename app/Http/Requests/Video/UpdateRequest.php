@@ -61,7 +61,7 @@ class UpdateRequest extends FormRequest
 
         $response = new VideoResource($video);
 
-        event(new UpdateEvent($video, $this, $response));
+        event(new UpdateEvent($video, $this->all(), $response));
 
         return $response;
 
