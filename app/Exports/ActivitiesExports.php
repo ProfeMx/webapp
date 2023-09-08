@@ -10,12 +10,12 @@ use Maatwebsite\Excel\Concerns\FromView;
 class ActivitiesExports implements FromView
 {
 
-    protected $request;
+    protected $data;
 
-    public function __construct($request) 
+    public function __construct(array $data) 
     {
 
-        $this->request = $request;
+        $this->data = $data;
 
     }
 
@@ -35,7 +35,7 @@ class ActivitiesExports implements FromView
 
         $builder = new Builder();
 
-        return $builder->get(Activity::class, $this->request);
+        return $builder->get(Activity::class, $this->data);
 
     }
 

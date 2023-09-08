@@ -10,12 +10,12 @@ use Maatwebsite\Excel\Concerns\FromView;
 class QuizzesExports implements FromView
 {
 
-    protected $request;
+    protected $data;
 
-    public function __construct($request) 
+    public function __construct(array $data) 
     {
 
-        $this->request = $request;
+        $this->data = $data;
 
     }
 
@@ -38,7 +38,7 @@ class QuizzesExports implements FromView
 
         $builder = new Builder();
 
-        return $builder->get(Quiz::class, $this->request);
+        return $builder->get(Quiz::class, $this->data);
 
     }
 

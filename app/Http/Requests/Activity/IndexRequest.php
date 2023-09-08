@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Activity::class, $this);
+        $query = $builder->get(Activity::class, $this->all());
 
         return ActivityResource::collection($query);
 

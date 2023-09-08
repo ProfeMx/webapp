@@ -10,12 +10,12 @@ use Maatwebsite\Excel\Concerns\FromView;
 class CareersExports implements FromView
 {
 
-    protected $request;
+    protected $data;
 
-    public function __construct($request) 
+    public function __construct(array $data) 
     {
 
-        $this->request = $request;
+        $this->data = $data;
 
     }
 
@@ -38,7 +38,7 @@ class CareersExports implements FromView
 
         $builder = new Builder();
 
-        return $builder->get(Career::class, $this->request);
+        return $builder->get(Career::class, $this->data);
 
     }
 
