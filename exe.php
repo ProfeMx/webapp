@@ -25,10 +25,10 @@ $models = ['Activity',
 'User',
 'Video',];
 
-foreach ($modelos as $modelo) {
-    $comando = "php builder make:full-model " . $modelo;
-    shell_exec($comando);
-    echo "Ejecutado: " . $comando . "\n";
+foreach ($models as $model) {
+    $command = "php builder make:full-model " . $model;
+    shell_exec($command);
+    echo "Ejecutado: " . $command . "\n";
 }
 
 ?>
