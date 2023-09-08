@@ -60,7 +60,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Lesson::class, $this);
+        $query = $builder->get(Lesson::class, $this->all());
 
         return LessonResource::collection($query);
 

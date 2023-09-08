@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(EnrollmentLog::class, $this);
+        $query = $builder->get(EnrollmentLog::class, $this->all());
 
         return EnrollmentLogResource::collection($query);
 

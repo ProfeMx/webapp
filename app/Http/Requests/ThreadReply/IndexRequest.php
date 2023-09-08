@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(ThreadReply::class, $this);
+        $query = $builder->get(ThreadReply::class, $this->all());
 
         return ThreadReplyResource::collection($query);
 

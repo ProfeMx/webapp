@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Certificate::class, $this);
+        $query = $builder->get(Certificate::class, $this->all());
 
         return CertificateResource::collection($query);
 

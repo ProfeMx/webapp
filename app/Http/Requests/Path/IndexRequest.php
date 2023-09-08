@@ -60,7 +60,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Path::class, $this);
+        $query = $builder->get(Path::class, $this->all());
 
         return PathResource::collection($query);
 

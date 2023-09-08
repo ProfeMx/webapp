@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Video::class, $this);
+        $query = $builder->get(Video::class, $this->all());
 
         return VideoResource::collection($query);
 

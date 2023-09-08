@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Note::class, $this);
+        $query = $builder->get(Note::class, $this->all());
 
         return NoteResource::collection($query);
 

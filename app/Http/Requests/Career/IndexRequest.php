@@ -62,7 +62,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Career::class, $this);
+        $query = $builder->get(Career::class, $this->all());
 
         return CareerResource::collection($query);
 

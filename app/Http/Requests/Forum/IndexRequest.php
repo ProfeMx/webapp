@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Forum::class, $this);
+        $query = $builder->get(Forum::class, $this->all());
 
         return ForumResource::collection($query);
 

@@ -62,7 +62,7 @@ class IndexRequest extends FormRequest
 
         $builder = new Builder();
 
-        $query = $builder->get(Section::class, $this);
+        $query = $builder->get(Section::class, $this->all());
 
         return SectionResource::collection($query);
 
