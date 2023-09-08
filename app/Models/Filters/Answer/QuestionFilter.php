@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Answer;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class QuestionFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->question_id) {
+        if ($data->question_id) {
 
-            $query->where('question_id', $request->question_id);
+            $query->where('question_id', $data->question_id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'question_id');
+        $query = Order::orderBy($query, $data, 'question_id');
 
         return $query;
 

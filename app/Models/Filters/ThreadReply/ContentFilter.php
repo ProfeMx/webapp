@@ -3,22 +3,21 @@
 namespace App\Models\Filters\ThreadReply;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class ContentFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->content) {
+        if ($data->content) {
 
-            $query->where('content', 'like', '%' . $request->content . '%');
+            $query->where('content', 'like', '%' . $data->content . '%');
 
         }
 
-        $query = Order::orderBy($query, $request, 'id');
+        $query = Order::orderBy($query, $data, 'id');
 
         return $query;
 

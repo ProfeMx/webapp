@@ -3,16 +3,15 @@
 namespace App\Models\Filters\Certificate;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->load_enrollment == 1 || $request->load_enrollment == true) {
+        if ($data->load_enrollment == 1 || $data->load_enrollment == true) {
 
             $query->with(['enrollment']);
 
@@ -20,7 +19,7 @@ class EagerLoadingFilter
         
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 

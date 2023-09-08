@@ -3,22 +3,21 @@
 namespace App\Models\Filters\EnrollmentLog;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EnrollmentFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->enrollment_id) {
+        if ($data->enrollment_id) {
 
-            $query->where('enrollment_id', $request->enrollment_id);
+            $query->where('enrollment_id', $data->enrollment_id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'enrollment_id');
+        $query = Order::orderBy($query, $data, 'enrollment_id');
 
         return $query;
 

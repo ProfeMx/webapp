@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Resource;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class IdFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->id) {
+        if ($data->id) {
 
-            $query->where('id', $request->id);
+            $query->where('id', $data->id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'id');
+        $query = Order::orderBy($query, $data, 'id');
 
         return $query;
 

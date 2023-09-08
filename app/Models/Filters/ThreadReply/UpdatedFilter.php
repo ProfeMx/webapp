@@ -3,19 +3,18 @@
 namespace App\Models\Filters\ThreadReply;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 use Innoboxrr\SearchSurge\Search\Utils\UpdatedFilterQuery;
 
 class UpdatedFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        $query = UpdatedFilterQuery::sort($query, $request);
+        $query = UpdatedFilterQuery::sort($query, $data);
 
-        $query = Order::orderBy($query, $request, 'updated_at');
+        $query = Order::orderBy($query, $data, 'updated_at');
 
         return $query;
 

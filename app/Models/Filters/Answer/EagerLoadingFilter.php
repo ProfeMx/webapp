@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Answer;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->load_attempt == 1 || $request->load_attempt == true) {
+        if ($data->load_attempt == 1 || $data->load_attempt == true) {
 
             $query->with(['attempt']);
 
         }
 
-        if ($request->load_question == 1 || $request->load_question == true) {
+        if ($data->load_question == 1 || $data->load_question == true) {
 
             $query->with(['question']);
 
@@ -26,7 +25,7 @@ class EagerLoadingFilter
         
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 

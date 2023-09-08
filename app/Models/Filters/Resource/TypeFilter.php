@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Resource;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class TypeFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->type) {
+        if ($data->type) {
 
-            $query->where('type', $request->type);
+            $query->where('type', $data->type);
 
         }
 
-        $query = Order::orderBy($query, $request, 'type');
+        $query = Order::orderBy($query, $data, 'type');
 
         return $query;
 

@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Submission;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
         
-        if ($request->load_user == 1 || $request->load_user == true) {
+        if ($data->load_user == 1 || $data->load_user == true) {
 
             $query->with(['user']);
 
         }
 
-        if ($request->load_homework == 1 || $request->load_homework == true) {
+        if ($data->load_homework == 1 || $data->load_homework == true) {
 
             $query->with(['homework']);
 
@@ -26,7 +25,7 @@ class EagerLoadingFilter
 
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 

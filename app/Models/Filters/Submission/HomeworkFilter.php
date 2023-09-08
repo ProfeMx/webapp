@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Submission;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class HomeworkFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->homework_id) {
+        if ($data->homework_id) {
 
-            $query->where('homework_id', $request->homework_id);
+            $query->where('homework_id', $data->homework_id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'homework_id');
+        $query = Order::orderBy($query, $data, 'homework_id');
 
         return $query;
 

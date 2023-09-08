@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Resource;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->load_lesson == 1 || $request->load_lesson == true) {
+        if ($data->load_lesson == 1 || $data->load_lesson == true) {
 
             $query->with(['lesson']);
 
         }
 
-        if ($request->load_resourceable == 1 || $request->load_resourceable == true) {
+        if ($data->load_resourceable == 1 || $data->load_resourceable == true) {
 
             $query->with(['resourceable']);
 
@@ -26,7 +25,7 @@ class EagerLoadingFilter
         
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 

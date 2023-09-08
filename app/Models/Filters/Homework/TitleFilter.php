@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Homework;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class TitleFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->title) {
+        if ($data->title) {
 
-            $query->where('title', 'like', '%' . $request->title . '%');
+            $query->where('title', 'like', '%' . $data->title . '%');
 
         }
 
-        $query = Order::orderBy($query, $request, 'title');
+        $query = Order::orderBy($query, $data, 'title');
 
         return $query;
 

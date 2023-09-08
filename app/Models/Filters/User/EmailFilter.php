@@ -3,22 +3,21 @@
 namespace App\Models\Filters\User;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EmailFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->email) {
+        if ($data->email) {
 
-            $query->where('email', 'like', '%' . $request->email . '%');
+            $query->where('email', 'like', '%' . $data->email . '%');
 
         }
 
-        $query = Order::orderBy($query, $request, 'email');
+        $query = Order::orderBy($query, $data, 'email');
 
         return $query;
 

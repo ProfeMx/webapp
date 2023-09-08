@@ -3,40 +3,39 @@
 namespace App\Models\Filters\Lesson;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->load_metas == 1 || $request->load_metas == true) {
+        if ($data->load_metas == 1 || $data->load_metas == true) {
 
             $query->with(['metas']);
 
         }
 
-        if ($request->load_activities == 1 || $request->load_activities == true) {
+        if ($data->load_activities == 1 || $data->load_activities == true) {
 
             $query->with(['activities']);
 
         }
 
-        if ($request->load_resources == 1 || $request->load_resources == true) {
+        if ($data->load_resources == 1 || $data->load_resources == true) {
 
             $query->with(['resources']);
 
         }
 
-        if ($request->load_enrollment_logs == 1 || $request->load_enrollment_logs == true) {
+        if ($data->load_enrollment_logs == 1 || $data->load_enrollment_logs == true) {
 
             $query->with(['enrollmentLogs']);
 
         }
 
-        if ($request->load_sections == 1 || $request->load_sections == true) {
+        if ($data->load_sections == 1 || $data->load_sections == true) {
 
             $query->with(['sections']);
 
@@ -44,7 +43,7 @@ class EagerLoadingFilter
 
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 

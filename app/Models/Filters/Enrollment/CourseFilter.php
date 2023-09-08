@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Enrollment;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class CourseFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->course_id) {
+        if ($data->course_id) {
 
-            $query->where('course_id', $request->course_id);
+            $query->where('course_id', $data->course_id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'course_id');
+        $query = Order::orderBy($query, $data, 'course_id');
 
         return $query;
 

@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Path;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class DescriptionFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->description) {
+        if ($data->description) {
 
-            $query->where('description', 'like', '%' . $request->description . '%');
+            $query->where('description', 'like', '%' . $data->description . '%');
 
         }
 
-        $query = Order::orderBy($query, $request, 'description');
+        $query = Order::orderBy($query, $data, 'description');
 
         return $query;
 

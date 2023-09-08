@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Course;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class StatusFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->status) {
+        if ($data->status) {
 
-            $query->where('status', $request->status);
+            $query->where('status', $data->status);
 
         }
 
-        $query = Order::orderBy($query, $request, 'status');
+        $query = Order::orderBy($query, $data, 'status');
 
         return $query;
 

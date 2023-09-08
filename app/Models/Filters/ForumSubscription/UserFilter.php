@@ -3,22 +3,21 @@
 namespace App\Models\Filters\ForumSubscription;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class UserFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->user_id) {
+        if ($data->user_id) {
 
-            $query->where('user_id', $request->user_id);
+            $query->where('user_id', $data->user_id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'user_id');
+        $query = Order::orderBy($query, $data, 'user_id');
 
         return $query;
 

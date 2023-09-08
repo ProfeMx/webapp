@@ -3,22 +3,21 @@
 namespace App\Models\Filters\Video;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class SourceFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->source) {
+        if ($data->source) {
 
-            $query->where('source', $request->source);
+            $query->where('source', $data->source);
 
         }
 
-        $query = Order::orderBy($query, $request, 'source');
+        $query = Order::orderBy($query, $data, 'source');
 
         return $query;
 

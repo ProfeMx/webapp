@@ -3,28 +3,27 @@
 namespace App\Models\Filters\Question;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->load_metas == 1 || $request->load_metas == true) {
+        if ($data->load_metas == 1 || $data->load_metas == true) {
 
             $query->with(['metas']);
 
         }
 
-        if ($request->load_quiz == 1 || $request->load_quiz == true) {
+        if ($data->load_quiz == 1 || $data->load_quiz == true) {
 
             $query->with(['quiz']);
 
         }
 
-        if ($request->load_answers == 1 || $request->load_answers == true) {
+        if ($data->load_answers == 1 || $data->load_answers == true) {
 
             $query->with(['answers']);
 
@@ -32,7 +31,7 @@ class EagerLoadingFilter
         
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 

@@ -3,22 +3,21 @@
 namespace App\Models\Filters\ThreadReply;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class ThreadFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->thread_id) {
+        if ($data->thread_id) {
 
-            $query->where('thread_id', $request->thread_id);
+            $query->where('thread_id', $data->thread_id);
 
         }
 
-        $query = Order::orderBy($query, $request, 'thread_id');
+        $query = Order::orderBy($query, $data, 'thread_id');
 
         return $query;
 

@@ -3,40 +3,39 @@
 namespace App\Models\Filters\Enrollment;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Innoboxrr\SearchSurge\Search\Utils\Order;
 
 class EagerLoadingFilter
 {
 
-    public static function apply(Builder $query, Request $request)
+    public static function apply(Builder $query, $data)
     {
 
-        if ($request->load_metas == 1 || $request->load_metas == true) {
+        if ($data->load_metas == 1 || $data->load_metas == true) {
 
             $query->with(['metas']);
 
         }
 
-        if ($request->load_course == 1 || $request->load_course == true) {
+        if ($data->load_course == 1 || $data->load_course == true) {
 
             $query->with(['course']);
 
         }
 
-        if ($request->load_enrollment_logs == 1 || $request->load_enrollment_logs == true) {
+        if ($data->load_enrollment_logs == 1 || $data->load_enrollment_logs == true) {
 
             $query->with(['enrollmentLogs']);
 
         }
 
-        if ($request->load_user == 1 || $request->load_user == true) {
+        if ($data->load_user == 1 || $data->load_user == true) {
 
             $query->with(['user']);
 
         }
 
-        if ($request->load_certificate == 1 || $request->load_certificate == true) {
+        if ($data->load_certificate == 1 || $data->load_certificate == true) {
 
             $query->with(['certificate']);
 
@@ -44,7 +43,7 @@ class EagerLoadingFilter
 
         /*
 
-        if ($request->load_relation == 1 || $request->load_relation == true) {
+        if ($data->load_relation == 1 || $data->load_relation == true) {
 
             $query->with(['relation']);
 
