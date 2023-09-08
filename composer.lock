@@ -7138,16 +7138,16 @@
         },
         {
             "name": "innoboxrr/larapack-generator",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/innoboxrr/larapack-generator.git",
-                "reference": "08057db606ae2b2698024901f736ab5a20438385"
+                "reference": "6d564ea60002bc05d91b329c43f9acedd056f5ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/innoboxrr/larapack-generator/zipball/08057db606ae2b2698024901f736ab5a20438385",
-                "reference": "08057db606ae2b2698024901f736ab5a20438385",
+                "url": "https://api.github.com/repos/innoboxrr/larapack-generator/zipball/6d564ea60002bc05d91b329c43f9acedd056f5ed",
+                "reference": "6d564ea60002bc05d91b329c43f9acedd056f5ed",
                 "shasum": ""
             },
             "require": {
@@ -7191,9 +7191,9 @@
             ],
             "support": {
                 "issues": "https://github.com/innoboxrr/larapack-generator/issues",
-                "source": "https://github.com/innoboxrr/larapack-generator/tree/3.1.1"
+                "source": "https://github.com/innoboxrr/larapack-generator/tree/3.1.2"
             },
-            "time": "2023-09-04T17:24:50+00:00"
+            "time": "2023-09-08T01:34:59+00:00"
         },
         {
             "name": "laravel/pint",
