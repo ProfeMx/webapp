@@ -3,7 +3,6 @@
 namespace App\Http\Events\Activity\Events;
 
 use App\Models\Activity;
-use App\Http\Requests\Activity\ForceDeleteRequest;
 use Illuminate\Support\Facades\App;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -20,24 +19,22 @@ class ForceDeleteEvent
 
     public $activity;
 
-    public $request;
+    public $data;
 
     public $response;
 
     public $locale;
 
-    public function __construct(Activity $activity, ForceDeleteRequest $request, $response)
+    public function __construct(Activity $activity, array $data, $response, $locale = 'en')
     {
         
         $this->activity = $activity;
 
-        $this->request = $request;
+        $this->data = $data;
 
         $this->response = $response;
 
-        $this->locale = ($this->request->hasSession() && 
-            $this->request->getSession()->has('locale')) ? $this->request->getSession()->get('locale') : 
-            'en';
+        $this->locale = $locale
 
         App::setLocale($this->locale);
 

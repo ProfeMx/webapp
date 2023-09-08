@@ -2,7 +2,6 @@
 
 namespace App\Http\Events\Activity\Events;
 
-use App\Http\Requests\Activity\ExportRequest;
 use Illuminate\Support\Facades\App;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -16,20 +15,20 @@ class ExportEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $request;
+    public $data;
+
+    public $user;
 
     public $locale;
 
-    public function __construct(ExportRequest $request)
+    public function __construct(array $data, $user, $locale = 'en')
     {
 
-        $this->request = $request;
-        
-        $this->locale = ($this->request->hasSession() && $this->request->getSession()->has('locale')) ? 
-            $this->request->getSession()->get('locale') : 
-            'en';
+        $this->data = $data;
 
-        App::setLocale($this->locale);
+        $this->user = $user;
+
+        $this->locale = $locale;
 
     }
 
